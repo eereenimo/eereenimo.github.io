@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { GlobalAtmosphere } from "@/components/ui/GlobalAtmosphere";
+import { CustomCursor } from "@/components/ui/CustomCursor";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -64,6 +65,7 @@ export default function RootLayout({
     >
       <body className="min-h-screen antialiased bg-transparent flex flex-col">
         <GlobalAtmosphere />
+        <CustomCursor />
         {children}
       </body>
     </html>

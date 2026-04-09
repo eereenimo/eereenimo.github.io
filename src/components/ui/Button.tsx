@@ -1,7 +1,7 @@
 "use client";
 
-import { motion, HTMLMotionProps } from "framer-motion";
-import React from "react";
+import { motion, HTMLMotionProps, useMotionValue, useSpring, useMotionTemplate } from "framer-motion";
+import React, { useRef, useState } from "react";
 
 // Easing curves — precise, not generic
 const EASE_OUT_EXPO: number[] = [0.16, 1, 0.3, 1];
@@ -111,13 +111,56 @@ export function Button({
   size = "md",
 }: ButtonProps) {
   const config = variantConfig[variant];
+  const buttonRef = useRef<any>(null);
+
+  // ── Magnetic & Glow Physics ──
+  const [isHovered, setIsHovered] = useState(false);
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  
+  // Weighty, physical spring for the structural magnetic stretch (outer element)
+  const springConfig = { mass: 0.1, stiffness: 120, damping: 14 };
+  const springX = useSpring(x, springConfig);
+  const springY = useSpring(y, springConfig);
+
+  // Raw coordinates for the inner reactive glow (fast follow)
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+  const glowX = useSpring(mouseX, { damping: 40, stiffness: 600 });
+  const glowY = useSpring(mouseY, { damping: 40, stiffness: 600 });
+  const glowEffect = useMotionTemplate`radial-gradient(80px circle at ${glowX}px ${glowY}px, rgba(255,255,255,0.12), transparent)`;
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (typeof window !== "undefined" && window.matchMedia("(pointer: coarse)").matches) return;
+    if (!buttonRef.current) return;
+    
+    const rect = buttonRef.current.getBoundingClientRect();
+    
+    // Magnetic Pull
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+    // Attenuated distance to prevent heavy dragging (approx 10-15% of distance)
+    x.set((e.clientX - centerX) * 0.15);
+    y.set((e.clientY - centerY) * 0.2);
+
+    // Inner Glow Positioning
+    mouseX.set(e.clientX - rect.left);
+    mouseY.set(e.clientY - rect.top);
+  };
+
+  const handleMouseEnter = () => setIsHovered(true);
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+    x.set(0);
+    y.set(0); // Snap back structurally
+  };
 
   const combined = [
     // Base reset — shape and layout only, no inherited weight
     "inline-flex items-center justify-center rounded-full",
     "cursor-pointer select-none focus-visible:outline-none",
     // Weight set per-variant in variantConfig, font-medium as fallback
-    "font-medium",
+    "font-medium relative overflow-hidden",
     sizeConfig[size],
     config.base,
     className,
@@ -127,18 +170,35 @@ export function Button({
     whileHover: config.motion.hover,
     whileTap: config.motion.tap,
     transition: { duration: 0.15, ease: EASE_OUT_EXPO },
+    style: { x: springX, y: springY },
+    onMouseMove: handleMouseMove,
+    onMouseEnter: handleMouseEnter,
+    onMouseLeave: handleMouseLeave,
   };
+
+  // The dynamic interactive glow layer inside the button
+  const ReactiveGlow = () => (
+    <motion.div
+      className="pointer-events-none absolute inset-0 z-0 opacity-0 transition-opacity duration-300"
+      style={{
+        background: glowEffect,
+        opacity: isHovered && variant !== "ghost" ? 1 : 0
+      }}
+    />
+  );
 
   if (href) {
     return (
       <motion.a
         id={id}
+        ref={buttonRef}
         href={href}
         target={target}
         rel={rel}
         className={combined}
         {...(motionProps as HTMLMotionProps<"a">)}
       >
+        <ReactiveGlow />
         {children}
       </motion.a>
     );
@@ -151,6 +211,7 @@ export function Button({
       className={combined}
       {...(motionProps as HTMLMotionProps<"button">)}
     >
+      <ReactiveGlow />
       {children}
     </motion.button>
   );

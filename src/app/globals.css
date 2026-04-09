@@ -59,6 +59,12 @@ body {
   overflow-x: hidden;
 }
 
+@media (pointer: fine) {
+  body, a, button, [role="button"], .interactive {
+    cursor: none !important;
+  }
+}
+
 /* ============================================================
    SELECTION
    ============================================================ */
