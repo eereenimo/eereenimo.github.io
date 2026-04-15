@@ -3,7 +3,9 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { GlobalAtmosphere } from "@/components/ui/GlobalAtmosphere";
 import { CustomCursor } from "@/components/ui/CustomCursor";
 import { Navbar } from "@/components/layout/Navbar";
+import { ScrollToTop } from "@/components/ui/ScrollToTop";
 import { LanguageProvider } from "@/lib/i18n";
+import { ThemeProvider } from "@/lib/theme";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -63,15 +65,33 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable}`}
-      style={{ colorScheme: "dark" }}
     >
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var theme = localStorage.getItem('theme');
+                  var finalTheme = theme || 'dark';
+                  document.documentElement.classList.add(finalTheme);
+                  document.documentElement.style.colorScheme = finalTheme;
+                } catch (e) {}
+              })()
+            `,
+          }}
+        />
+      </head>
       <body className="min-h-screen antialiased bg-transparent flex flex-col">
-        <LanguageProvider>
-          <GlobalAtmosphere />
-          <Navbar />
-          <CustomCursor />
-          {children}
-        </LanguageProvider>
+        <ThemeProvider>
+          <LanguageProvider>
+            <GlobalAtmosphere />
+            <Navbar />
+            <CustomCursor />
+            {children}
+            <ScrollToTop />
+          </LanguageProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

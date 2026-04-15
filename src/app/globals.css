@@ -4,24 +4,88 @@
    DESIGN TOKEN SYSTEM — Eren Serdaroğlu Portfolio
    ============================================================ */
 
+:root {
+  /* --- Light Theme (Enhanced Contrast) --- */
+  --bg:           #F1F3F5;
+  --surface:      #FFFFFF;
+  --surface-alt:  #E9ECEF;
+  --border:       rgba(0, 0, 0, 0.12); /* More visible border */
+  --border-hover: rgba(108, 142, 255, 0.40);
+
+  --primary:      #4A6CF7; /* Slightly deeper blue for light mode */
+  --primary-dim:  rgba(74, 108, 247, 0.70);
+  --accent:       #008394;
+  --glow:         rgba(74, 108, 247, 0.15);
+
+  --text:         #0F172A;
+  --text-secondary: #334155;
+  --text-muted:   #64748B;
+
+  --green-pulse:  #15803D;
+  
+  /* Atmosphere Effects — Darker in Light Mode */
+  --orb-rgb-1:    15, 23, 42;    /* Slate 900 */
+  --orb-rgb-2:    30, 41, 59;    /* Slate 800 */
+  --orb-rgb-3:    51, 65, 85;    /* Slate 700 */
+  --orb-mix-blend: multiply;
+  --orb-opacity:   0.08;
+  
+  --noise-mix-blend: multiply;
+  --vignette-opacity: 0.15;
+  --grid-opacity:  0.06;
+  --indicator-opacity: 0.1;
+}
+
+.dark {
+  /* --- Dark Theme (Cinematic Night) --- */
+  --bg:           #050508;
+  --surface:      #0D0D14;
+  --surface-alt:  #12121C;
+  --border:       rgba(255, 255, 255, 0.06);
+  --border-hover: rgba(108, 142, 255, 0.20);
+
+  --primary:      #6C8EFF;
+  --primary-dim:  rgba(108, 142, 255, 0.70);
+  --accent:       #00D4FF;
+  --glow:         rgba(108, 142, 255, 0.15);
+
+  --text:         #F4F4FA;
+  --text-secondary: #86869B;
+  --text-muted:   #50506A;
+
+  --green-pulse:  #22C55E;
+
+  /* Atmosphere Effects */
+  --orb-rgb-1:    99, 102, 241;  /* Indigo */
+  --orb-rgb-2:    139, 92, 246;  /* Violet */
+  --orb-rgb-3:    56, 189, 248;  /* Cyan */
+  --orb-mix-blend: screen;
+  --orb-opacity:   0.10;
+  
+  --noise-mix-blend: overlay;
+  --vignette-opacity: 0.7;
+  --grid-opacity:  0.017;
+  --indicator-opacity: 0.015;
+}
+
 @theme inline {
-  /* --- Colors --- */
-  --color-bg:           #050508;
-  --color-surface:      #0D0D14;
-  --color-surface-alt:  #12121C;
-  --color-border:       rgba(255, 255, 255, 0.06);
-  --color-border-hover: rgba(108, 142, 255, 0.20);
+  /* --- Colors mapped to variables --- */
+  --color-bg:           var(--bg);
+  --color-surface:      var(--surface);
+  --color-surface-alt:  var(--surface-alt);
+  --color-border:       var(--border);
+  --color-border-hover: var(--border-hover);
 
-  --color-primary:      #6C8EFF;
-  --color-primary-dim:  rgba(108, 142, 255, 0.70);
-  --color-accent:       #00D4FF;
-  --color-glow:         rgba(108, 142, 255, 0.15);
+  --color-primary:      var(--primary);
+  --color-primary-dim:  var(--primary-dim);
+  --color-accent:       var(--accent);
+  --color-glow:         var(--glow);
 
-  --color-text:         #F4F4FA;
-  --color-text-secondary: #86869B;
-  --color-text-muted:   #50506A;
+  --color-text:         var(--text);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted:   var(--text-muted);
 
-  --color-green-pulse:  #22C55E;
+  --color-green-pulse:  var(--green-pulse);
 
   /* --- Fonts --- */
   --font-sans: var(--font-geist-sans);
@@ -220,18 +284,25 @@ body {
   opacity: 0.025;
   pointer-events: none;
   z-index: 999;
+  mix-blend-mode: var(--noise-mix-blend);
 }
+
+.gradient-orb {
+  mix-blend-mode: var(--orb-mix-blend);
+}
+
+/* Variables consolidated at top */
 
 /* ============================================================
    GLASS CARD UTILITY
    ============================================================ */
 
 .glass-card {
-  background: rgba(255, 255, 255, 0.025);
+  background: color-mix(in srgb, var(--color-surface) 60%, transparent);
   border: 1px solid var(--color-border);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
 }
 
 .glass-card:hover {

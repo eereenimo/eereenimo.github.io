@@ -1,10 +1,12 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { motion, useScroll, useTransform, useVelocity, useSpring } from "framer-motion";
+import { motion, useScroll, useTransform, useVelocity, useSpring, type MotionValue } from "framer-motion";
+import { useTheme } from "@/lib/theme";
 
 export function GlobalAtmosphere() {
   const { scrollYProgress, scrollY } = useScroll();
+  const { theme } = useTheme();
   
   // ── Scroll Indicator Velocity Fading ──
   const velocity = useVelocity(scrollY);
@@ -21,22 +23,24 @@ export function GlobalAtmosphere() {
 
   // ── Phase 6: Full-Visibility Network Field Opacity ──
   // Stronger presence site-wide: Hero (32%) -> Featured (12%) -> Contact (22%)
-  const networkOpacity = useTransform(scrollYProgress, [0, 0.3, 0.8, 1], [0.32, 0.12, 0.12, 0.22]);
+  // Adjusted for Light Theme to be more prominent
+  const networkOpacity = useTransform(
+    scrollYProgress, 
+    [0, 0.3, 0.8, 1], 
+    theme === 'light' ? [0.65, 0.35, 0.35, 0.45] : [0.32, 0.12, 0.12, 0.22]
+  );
 
   return (
     <>
       {/* Fixed global background container */}
-      <div aria-hidden="true" className="fixed inset-0 overflow-hidden pointer-events-none select-none -z-50">
+      <div aria-hidden="true" className="fixed inset-0 overflow-hidden pointer-events-none select-none -z-50 bg-[var(--bg)] transition-colors duration-500">
         
-        {/* Base dark bg */}
-        <div className="absolute inset-0 bg-[#050508]" />
-
         {/* ── Phase 3 & 4: Intelligent Network Field (Ghosted Intelligence) ── */}
         <motion.div 
           className="absolute inset-0 z-0"
           style={{ opacity: networkOpacity }}
         >
-          <NetworkField scrollYProgress={scrollYProgress} />
+          <NetworkField scrollYProgress={scrollYProgress} theme={theme} />
         </motion.div>
 
         {/* ── Liquid Light System ── */}
@@ -44,29 +48,29 @@ export function GlobalAtmosphere() {
           className="absolute inset-0 z-0"
           style={{ opacity: liquidOpacity }}
         >
-          {/* Orb 1: Core Indigo */}
+          {/* Orb 1: Core Indigo / Slate */}
           <div 
-             className="absolute -top-[10%] -left-[10%] w-[70vw] h-[70vw] mix-blend-screen opacity-[0.08]"
+             className="gradient-orb absolute -top-[10%] -left-[10%] w-[70vw] h-[70vw] opacity-[var(--orb-opacity,0.08)]"
              style={{ 
-               background: "radial-gradient(circle at center, rgba(99,102,241,1) 0%, transparent 60%)",
+               background: "radial-gradient(circle at center, rgba(var(--orb-rgb-1), 1) 0%, transparent 60%)",
                filter: "blur(200px)",
                animation: "mesh-shift 83s linear infinite" 
              }}
           />
-          {/* Orb 2: Aura Violet */}
+          {/* Orb 2: Aura Violet / Slate */}
           <div 
-             className="absolute top-[20%] -right-[15%] w-[80vw] h-[60vw] mix-blend-screen opacity-[0.10]"
+             className="gradient-orb absolute top-[20%] -right-[15%] w-[80vw] h-[60vw] opacity-[var(--orb-opacity,0.10)]"
              style={{ 
-               background: "radial-gradient(circle at center, rgba(139,92,246,1) 0%, transparent 60%)",
+               background: "radial-gradient(circle at center, rgba(var(--orb-rgb-2), 1) 0%, transparent 60%)",
                filter: "blur(240px)",
                animation: "mesh-shift-2 107s linear infinite" 
              }}
           />
-          {/* Orb 3: Highlight Cyan/Blue */}
+          {/* Orb 3: Highlight Cyan / Slate */}
           <div 
-             className="absolute -bottom-[20%] left-[20%] w-[90vw] h-[50vw] mix-blend-screen opacity-[0.05]"
+             className="gradient-orb absolute -bottom-[20%] left-[20%] w-[90vw] h-[50vw] opacity-[var(--orb-opacity,0.05)]"
              style={{ 
-               background: "radial-gradient(circle at center, rgba(56,189,248,1) 0%, transparent 60%)",
+               background: "radial-gradient(circle at center, rgba(var(--orb-rgb-3), 1) 0%, transparent 60%)",
                filter: "blur(180px)",
                animation: "mesh-shift-3 131s linear infinite" 
              }}
@@ -75,32 +79,36 @@ export function GlobalAtmosphere() {
 
         {/* Minimal structural grid site-wide */}
         <div 
-          className="absolute inset-0 opacity-[0.017]"
+          className="absolute inset-0 opacity-[var(--grid-opacity,0.017)] transition-opacity duration-500"
           style={{
             backgroundImage: `
-              linear-gradient(to right, rgba(255,255,255,1) 1px, transparent 1px),
-              linear-gradient(to bottom, rgba(255,255,255,1) 1px, transparent 1px),
-              linear-gradient(60deg, rgba(255,255,255,0.5) 1px, transparent 1px),
-              linear-gradient(-60deg, rgba(255,255,255,0.5) 1px, transparent 1px)
+              linear-gradient(to right, currentColor 1px, transparent 1px),
+              linear-gradient(to bottom, currentColor 1px, transparent 1px),
+              linear-gradient(60deg, currentColor 1px, transparent 1px),
+              linear-gradient(-60deg, currentColor 1px, transparent 1px)
             `,
+            color: "var(--color-text)",
             backgroundSize: "80px 80px, 80px 80px, 160px 160px, 160px 160px"
           }}
         />
         
         {/* Soft global vignette */}
         <motion.div
-          className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_40%,transparent_10%,rgba(5,5,8,0.7)_100%)]"
-          style={{ opacity: useTransform(scrollYProgress, [0, 1], [1, 0.65]) }}
+          className="absolute inset-0"
+          style={{ 
+            background: "radial-gradient(ellipse at 50% 40%, transparent 10%, var(--bg) 100%)",
+            opacity: useTransform(scrollYProgress, [0, 1], [0.7, 0.4]) 
+          }}
         />
         
         {/* Cinematic noise overlay */}
-        <div className="absolute inset-0 opacity-[0.012] mix-blend-overlay noise-overlay" />
+        <div className="absolute inset-0 opacity-[0.012] noise-overlay" />
       </div>
 
       {/* Cinematic Scroll Progress Indicator — Fixed to right screen edge */}
       <motion.div 
-        className="fixed top-0 right-0 bottom-0 w-[1px] bg-[rgba(255,255,255,0.015)] pointer-events-none z-50 origin-right transition-opacity duration-500"
-        style={{ opacity: indicatorOpacity }}
+        className="fixed top-0 right-0 bottom-0 w-[1px] bg-[var(--color-primary)] pointer-events-none z-50 origin-right transition-all duration-500"
+        style={{ opacity: useTransform(indicatorOpacity, (v) => Number(v) + (theme === 'light' ? 0.05 : 0)) }}
       >
         <motion.div 
           className="w-full bg-[var(--color-primary)] opacity-50 origin-top"
@@ -115,16 +123,15 @@ export function GlobalAtmosphere() {
 
 interface NetworkFieldProps {
   scrollYProgress: MotionValue<number>;
+  theme: string | undefined;
 }
 
-function NetworkField({ scrollYProgress }: NetworkFieldProps) {
+function NetworkField({ scrollYProgress, theme }: NetworkFieldProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const mouseRef = useRef({ x: -1000, y: -1000 });
-  const mouseVelRef = useRef({ x: 0, y: 0 });
   const ripplesRef = useRef<{ x: number, y: number, r: number, alpha: number, power: number }[]>([]);
 
   useEffect(() => {
-    // Performance Guard: Skip on touch/low-power
     if (typeof window === "undefined" || window.matchMedia("(pointer: coarse)").matches) return;
 
     const canvas = canvasRef.current;
@@ -137,12 +144,10 @@ function NetworkField({ scrollYProgress }: NetworkFieldProps) {
     canvas.width = width;
     canvas.height = height;
 
-    // Sparse Config - Keeping same node count but increasing presence
     const pointCount = 34;
-    const connectionRadius = 370; // Slight increase for richer structural geometry
+    const connectionRadius = 370;
     const points: { x: number; y: number; vx: number; vy: number; dx: number; dy: number; friction: number }[] = [];
 
-    // Initialize sparse nodes
     for (let i = 0; i < pointCount; i++) {
       points.push({
         x: Math.random() * width,
@@ -151,7 +156,7 @@ function NetworkField({ scrollYProgress }: NetworkFieldProps) {
         vy: (Math.random() - 0.5) * 0.15,
         dx: 0,
         dy: 0,
-        friction: 0.90 + Math.random() * 0.04 // Slightly lower friction for more physical weight
+        friction: 0.90 + Math.random() * 0.04
       });
     }
 
@@ -161,40 +166,45 @@ function NetworkField({ scrollYProgress }: NetworkFieldProps) {
       ctx.clearRect(0, 0, width, height);
       
       const sp = scrollYProgress.get();
-      // Floor the intensity so Contact remains alive (min ~0.72)
       const globalIntensity = 1.0 - (sp * 0.28); 
 
-      // Update & Filter Ripples
       ripplesRef.current = ripplesRef.current.filter(r => {
-        r.r += 7; // Faster, high-energy pulse
+        r.r += 7;
         r.alpha *= 0.965; 
         return r.alpha > 0.01;
       });
 
-      // Update positions & Draw
+      // Theme-based colors
+      const nodeRgb = theme === 'dark' ? '255, 255, 255' : '15, 23, 42';
+      const lineRgb = theme === 'dark' ? '214, 224, 255' : '108, 142, 255';
+      const rippleColor = theme === 'dark' ? 'rgba(255, 255, 255,' : 'rgba(0, 0, 0,';
+
+      // Draw Ripples (Actual visible circles)
+      ripplesRef.current.forEach(r => {
+        ctx.beginPath();
+        ctx.arc(r.x, r.y, r.r, 0, Math.PI * 2);
+        ctx.strokeStyle = `${rippleColor} ${r.alpha * 0.15})`;
+        ctx.lineWidth = 1;
+        ctx.stroke();
+      });
+
       for (let i = 0; i < points.length; i++) {
         const p = points[i];
-        
-        // 1. Procedural Drift
         p.x += p.vx;
         p.y += p.vy;
 
-        // Wrap around screen boundaries
         if (p.x < 0) p.x = width;
         if (p.x > width) p.x = 0;
         if (p.y < 0) p.y = height;
         if (p.y > height) p.y = 0;
 
-        // 2. High-Visibility Displacement (Interact/Drag)
         const dx = p.x - mouseRef.current.x;
         const dy = p.y - mouseRef.current.y;
         const dist = Math.sqrt(dx * dx + dy * dy);
         
-        // Larger interaction field
         if (dist < 300) {
-          const force = (1 - dist / 300) * 18; // Pronounced 18px force displacement
+          const force = (1 - dist / 300) * 18;
           const angle = Math.atan2(dy, dx);
-          
           p.dx += Math.cos(angle) * force * 0.12;
           p.dy += Math.sin(angle) * force * 0.12;
         }
@@ -205,15 +215,9 @@ function NetworkField({ scrollYProgress }: NetworkFieldProps) {
         const renderX = p.x + p.dx;
         const renderY = p.y + p.dy;
 
-        // 3. Tactile Perception: Activation Alpha
         let activationAlpha = 0;
+        if (dist < 350) activationAlpha += (1 - dist / 350) * (theme === 'light' ? 0.9 : 0.6);
 
-        // Proximity Boost (Clearly perceivable 0.6 max)
-        if (dist < 350) {
-          activationAlpha += (1 - dist / 350) * 0.6;
-        }
-
-        // Ripple / Click Boost (High contrast pulse)
         for (const r of ripplesRef.current) {
           const rDx = renderX - r.x;
           const rDy = renderY - r.y;
@@ -222,21 +226,18 @@ function NetworkField({ scrollYProgress }: NetworkFieldProps) {
           if (Math.abs(rDist - r.r) < thickness) {
             const ripplePower = (1 - Math.abs(rDist - r.r) / thickness) * r.alpha;
             activationAlpha += ripplePower * 1.0;
-            
             const rippleAngle = Math.atan2(rDy, rDx);
             p.dx += Math.cos(rippleAngle) * ripplePower * 8;
             p.dy += Math.sin(rippleAngle) * ripplePower * 8;
           }
         }
 
-        // Final Node Rendering
-        const finalNodeAlpha = (0.5 + (activationAlpha * 0.5)) * globalIntensity;
-        ctx.fillStyle = `rgba(255, 255, 255, ${finalNodeAlpha})`;
+        const finalNodeAlpha = (0.5 + (activationAlpha * 0.5)) * globalIntensity * (theme === 'light' ? 0.7 : 1);
+        ctx.fillStyle = `rgba(${nodeRgb}, ${finalNodeAlpha})`;
         ctx.beginPath();
-        ctx.arc(renderX, renderY, 1.4, 0, Math.PI * 2); // Larger, crisper nodes
+        ctx.arc(renderX, renderY, 1.4, 0, Math.PI * 2);
         ctx.fill();
 
-        // 4. Visible Connections
         for (let j = i + 1; j < points.length; j++) {
           const p2 = points[j];
           const r2x = p2.x + p2.dx;
@@ -244,11 +245,10 @@ function NetworkField({ scrollYProgress }: NetworkFieldProps) {
           const distNodes = Math.sqrt(Math.pow(renderX - r2x, 2) + Math.pow(renderY - r2y, 2));
 
           if (distNodes < connectionRadius) {
-            const baseLineAlpha = (1 - distNodes / connectionRadius) * 0.52; // Slightly stronger baseline
-            const finalLineAlpha = (baseLineAlpha + (activationAlpha * 0.5)) * globalIntensity;
-            
-            ctx.strokeStyle = `rgba(214, 224, 255, ${finalLineAlpha})`;
-            ctx.lineWidth = 1.0 + (activationAlpha * 0.8); // High-visibility thickening
+            const baseLineAlpha = (1 - distNodes / connectionRadius) * 0.52;
+            const finalLineAlpha = (baseLineAlpha + (activationAlpha * 0.5)) * globalIntensity * (theme === 'light' ? 0.6 : 1);
+            ctx.strokeStyle = `rgba(${lineRgb}, ${finalLineAlpha})`;
+            ctx.lineWidth = 1.0 + (activationAlpha * 0.8);
             ctx.beginPath();
             ctx.moveTo(renderX, renderY);
             ctx.lineTo(r2x, r2y);
@@ -256,7 +256,6 @@ function NetworkField({ scrollYProgress }: NetworkFieldProps) {
           }
         }
       }
-
       animationFrameId = requestAnimationFrame(animate);
     };
 
@@ -268,10 +267,7 @@ function NetworkField({ scrollYProgress }: NetworkFieldProps) {
 
     const handleMouseDown = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
-      if (target.tagName === 'A' || target.tagName === 'BUTTON' || target.closest('a') || target.closest('button')) {
-        return;
-      }
-      // Visible energy pulse on click
+      if (target.tagName === 'A' || target.tagName === 'BUTTON' || target.closest('a') || target.closest('button')) return;
       ripplesRef.current.push({ x: e.clientX, y: e.clientY, r: 0, alpha: 1.0, power: 1.0 });
     };
 
@@ -291,12 +287,12 @@ function NetworkField({ scrollYProgress }: NetworkFieldProps) {
       window.removeEventListener("mousedown", handleMouseDown);
       window.removeEventListener("resize", handleResize);
     };
-  }, [scrollYProgress]);
+  }, [scrollYProgress, theme]);
 
   return (
     <canvas 
       ref={canvasRef} 
-      className="absolute inset-0 w-full h-full opacity-70" // Slight master opacity limit to keep it premium
+      className={`absolute inset-0 w-full h-full transition-opacity duration-500 ${theme === 'light' ? 'opacity-100' : 'opacity-70'}`}
     />
   );
 }

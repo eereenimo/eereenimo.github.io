@@ -4,6 +4,7 @@ import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 import { useState, useEffect } from "react";
 import { useLanguage } from "@/lib/i18n";
 import { copy } from "@/data/translations";
+import { ThemeToggle } from "@/components/ui/ThemeToggle";
 
 const EASE_OUT_EXPO = [0.16, 1, 0.3, 1];
 
@@ -121,7 +122,12 @@ export function Navbar() {
           })}
         </nav>
 
-        <LanguageSwitch locale={locale} onToggle={toggleLocale} />
+        <div className="flex items-center gap-3">
+          <LanguageSwitch locale={locale} onToggle={toggleLocale} />
+          <div className="hidden sm:block">
+            <ThemeToggle />
+          </div>
+        </div>
 
         {/* CTA — desktop */}
         <a

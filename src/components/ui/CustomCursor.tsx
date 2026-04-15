@@ -2,10 +2,13 @@
 
 import { useEffect, useState } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
+import { useTheme } from "@/lib/theme";
 
 export function CustomCursor() {
   const [isVisible, setIsVisible] = useState(false);
   const [variant, setVariant] = useState<"default" | "link" | "project">("default");
+  const { theme } = useTheme();
+  const isDark = theme === 'dark';
 
   // Instant follow for the core
   const mouseX = useMotionValue(-100);
@@ -66,11 +69,11 @@ export function CustomCursor() {
 
   // The 50% Rule: Keep ring visual extremely restrained
   const ringVariants = {
-    default: { width: 36, height: 36, opacity: 0.35 },
+    default: { width: 36, height: 36, opacity: isDark ? 0.35 : 0.45 },
     // On link: expand slightly, soften intensity, act as a magnetic halo
-    link:    { width: 44, height: 44, opacity: 0.20 },
+    link:    { width: 44, height: 44, opacity: isDark ? 0.20 : 0.30 },
     // On project: expand massively to become a faint tracking ambient light
-    project: { width: 120, height: 120, opacity: 0.08 }
+    project: { width: 120, height: 120, opacity: isDark ? 0.08 : 0.12 }
   };
 
   const coreVariants = {
@@ -85,13 +88,15 @@ export function CustomCursor() {
     <>
       {/* Soft tracking aura */}
       <motion.div
-        className="pointer-events-none fixed top-0 left-0 z-[9999] rounded-full border border-[var(--color-primary)] mix-blend-screen hidden md:block"
+        className={`pointer-events-none fixed top-0 left-0 z-[9999] rounded-full border border-[var(--color-primary)] hidden md:block ${isDark ? 'mix-blend-screen' : ''}`}
         style={{
           x: ringX,
           y: ringY,
           translateX: "-50%",
           translateY: "-50%",
-          boxShadow: "0 0 20px rgba(108,142,255,0.25), inset 0 0 10px rgba(108,142,255,0.1)"
+          boxShadow: isDark 
+            ? "0 0 20px rgba(108,142,255,0.25), inset 0 0 10px rgba(108,142,255,0.1)"
+            : "0 0 15px rgba(108,142,255,0.15)"
         }}
         variants={ringVariants}
         animate={variant}
@@ -100,7 +105,7 @@ export function CustomCursor() {
 
       {/* Intense solid core */}
       <motion.div
-        className="pointer-events-none fixed top-0 left-0 z-[10000] w-[5px] h-[5px] bg-white rounded-full mix-blend-screen hidden md:block shadow-[0_0_8px_rgba(255,255,255,0.8)]"
+        className={`pointer-events-none fixed top-0 left-0 z-[10000] w-[5px] h-[5px] rounded-full hidden md:block ${isDark ? 'bg-white mix-blend-screen shadow-[0_0_8px_rgba(255,255,255,0.8)]' : 'bg-[var(--color-primary)] shadow-[0_0_6px_var(--color-glow)]'}`}
         style={{
           x: mouseX,
           y: mouseY,

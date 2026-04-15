@@ -179,20 +179,21 @@ function ProjectModule({ project, index, flip, locale }: ProjectModuleProps) {
           </motion.div>
 
           {/* Stack pills */}
-          <motion.div variants={staggerItem} className="flex flex-wrap gap-2 pt-1">
+          <motion.div variants={staggerItem} className="flex flex-wrap gap-2.5 pt-1">
             {project.stack.map((tech) => (
               <span
                 key={tech}
                 className={[
-                  "inline-flex items-center px-3 py-1.5",
-                  "rounded-full font-mono text-[11px] tracking-[0.06em]",
-                  "border border-[rgba(255,255,255,0.06)]",
-                  "bg-[rgba(255,255,255,0.02)]",
+                  "inline-flex items-center gap-2 px-4 py-2",
+                  "rounded-full font-mono text-[13px] tracking-[0.04em]",
+                  "border border-[var(--color-border)]",
+                  "bg-[var(--color-surface)] backdrop-blur-sm",
                   "text-[var(--color-text-secondary)]",
-                  "transition-all duration-200",
-                  "hover:border-[rgba(108,142,255,0.3)] hover:text-[var(--color-primary)]",
+                  "transition-all duration-300",
+                  "hover:border-[var(--color-primary-dim)] hover:text-[var(--color-primary)] hover:shadow-[0_0_15px_var(--color-glow)]",
                 ].join(" ")}
               >
+                <TechIcon name={tech} />
                 {tech}
               </span>
             ))}
@@ -469,6 +470,76 @@ function GenericAbstractVisual({ project }: { project: Project }) {
 }
 
 // ─── Inline icons ───────────────────────────────────────────────────────────
+
+function TechIcon({ name }: { name: string }) {
+  const iconSize = 14;
+  const lowerName = name.toLowerCase();
+
+  // Mapping technologies to simple SVG icons
+  if (lowerName.includes("next")) {
+    return (
+      <svg width={iconSize} height={iconSize} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z" /><polyline points="13 2 13 9 20 9" />
+      </svg>
+    );
+  }
+  if (lowerName.includes("react")) {
+    return (
+      <svg width={iconSize} height={iconSize} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="12" cy="12" r="2" /><path d="M12 2v2m0 16v2m8-10h2M2 12h2" /><path d="m19.07 4.93-1.41 1.41m-11.32 11.32-1.41 1.41m14.14 0-1.41-1.41M6.34 6.34 4.93 4.93" />
+      </svg>
+    );
+  }
+  if (lowerName.includes("type")) {
+    return (
+      <svg width={iconSize} height={iconSize} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M4 7V4h16v3M9 20h6M12 4v16" />
+      </svg>
+    );
+  }
+  if (lowerName.includes("tail")) {
+    return (
+      <svg width={iconSize} height={iconSize} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5l6.74-6.76z" /><line x1="16" y1="8" x2="2" y2="22" /><line x1="17.5" y1="15" x2="9" y2="22" />
+      </svg>
+    );
+  }
+  if (lowerName.includes("ai") || lowerName.includes("open")) {
+    return (
+      <svg width={iconSize} height={iconSize} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 2v4m0 12v4M2 12h4m12 0h4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83" /><circle cx="12" cy="12" r="4" />
+      </svg>
+    );
+  }
+  if (lowerName.includes("cms") || lowerName.includes("strap")) {
+    return (
+      <svg width={iconSize} height={iconSize} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+        <rect width="18" height="18" x="3" y="3" rx="2" /><path d="M3 9h18M9 21V9" />
+      </svg>
+    );
+  }
+  if (lowerName.includes("dock")) {
+    return (
+      <svg width={iconSize} height={iconSize} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M22 7.6L13 2 4 7.6v6.8L13 20l9-5.6V7.6z" /><path d="M13 13.4V2M4 7.6L13 12l9-4.4M8 10.1v4.4L13 17l5-2.5V10" />
+      </svg>
+    );
+  }
+  if (lowerName.includes("fire")) {
+    return (
+      <svg width={iconSize} height={iconSize} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 3.333 4 5 1.237 1.031 3 2.031 3 4a7 7 0 1 1-14 0c0-2 1.5-3.5 3-5.5.5 1.5 1.5 3 2.5 4Z" />
+      </svg>
+    );
+  }
+
+  // Default code icon
+  return (
+    <svg width={iconSize} height={iconSize} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+      <polyline points="16 18 22 12 16 6" /><polyline points="8 6 2 12 8 18" />
+    </svg>
+  );
+}
 
 function ExternalLink() {
   return (
