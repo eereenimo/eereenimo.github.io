@@ -2,6 +2,8 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Button } from "@/components/ui/Button";
+import { useLanguage } from "@/lib/i18n";
+import { copy } from "@/data/translations";
 
 // Easing — heavily dampened exponential ease-out for effortless motion
 const EASE_EXPO = [0.19, 1, 0.22, 1];
@@ -21,6 +23,8 @@ export function Hero() {
   const { scrollY } = useScroll();
   const contentY = useTransform(scrollY, [0, 500], [0, -40]);
   const opacity = useTransform(scrollY, [0, 400], [1, 0]);
+  const { locale } = useLanguage();
+  const t = copy[locale].hero;
 
   return (
     <section
@@ -53,7 +57,7 @@ export function Hero() {
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-[var(--color-green-pulse)]"></span>
                 </span>
                 <span className="text-[11px] font-mono tracking-[0.1em] text-[var(--color-text-secondary)] uppercase">
-                  Available for new opportunities
+                  {t.availability}
                 </span>
               </div>
             </motion.div>
@@ -71,7 +75,7 @@ export function Hero() {
                   Eren Serdaroğlu.
                 </span>
                 <span className="text-[clamp(1.5rem,3vw,2.25rem)] text-[var(--color-text-secondary)] font-normal mt-4 leading-[1.1] tracking-[-0.02em]">
-                  Full-Stack Engineer.
+                  {t.role}
                 </span>
               </h1>
             </motion.div>
@@ -84,7 +88,7 @@ export function Hero() {
               variants={staggerVariants}
               transition={transition(0.4)}
             >
-              I architect and build digital products that balance elegant engineering with premium visual polish. Focused on performance, scalability, and exceptional user experiences.
+              {t.statement}
             </motion.p>
 
             {/* CTAs */}
@@ -96,12 +100,28 @@ export function Hero() {
               transition={transition(0.55)}
             >
               <Button href="#work" variant="primary" size="lg">
-                View My Work
+                {t.workCta}
                 <ArrowRight />
               </Button>
               <Button href="#contact" variant="secondary" size="lg">
-                Get in Touch
+                {t.contactCta}
               </Button>
+            </motion.div>
+
+            {/* Social Links */}
+            <motion.div
+              className="mt-7 flex items-center gap-5"
+              initial="hidden"
+              animate="visible"
+              variants={staggerVariants}
+              transition={transition(0.7, 0.9)}
+            >
+              <SocialLink href="https://www.linkedin.com/in/eren-serdaroglu" label={t.linkedin}>
+                <LinkedInIcon />
+              </SocialLink>
+              <SocialLink href="https://github.com/eereenimo" label={t.github}>
+                <GitHubIcon />
+              </SocialLink>
             </motion.div>
           </div>
 
@@ -176,7 +196,7 @@ export function Hero() {
         aria-hidden="true"
       >
         <span className="text-[10px] font-mono tracking-[0.2em] uppercase text-[var(--color-text-secondary)] opacity-80">
-          Scroll
+          {t.scroll}
         </span>
         <div 
           className="w-px h-12 bg-gradient-to-b from-[var(--color-text-secondary)] to-transparent" 
@@ -205,6 +225,56 @@ function ArrowRight() {
         strokeWidth="1.5"
         strokeLinecap="round"
         strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+function SocialLink({
+  href,
+  label,
+  children,
+}: {
+  href: string;
+  label: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={label}
+      className="group inline-flex items-center gap-2 text-[12px] font-mono tracking-[0.12em] uppercase text-[var(--color-text-secondary)] hover:text-[var(--color-text)] transition-colors duration-300"
+    >
+      <span className="opacity-65 group-hover:opacity-100 transition-opacity duration-300">
+        {children}
+      </span>
+      <span className="relative">
+        {label}
+        <span className="absolute -bottom-1 left-0 h-px w-full bg-[var(--color-primary)] opacity-35 origin-left scale-x-0 transition-transform duration-300 group-hover:scale-x-100" />
+      </span>
+    </a>
+  );
+}
+
+function LinkedInIcon() {
+  return (
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path
+        d="M6.94 8.5H3.5V20H6.94V8.5ZM7.17 4.95C7.17 3.95 6.42 3.2 5.22 3.2C4.03 3.2 3.28 3.95 3.28 4.95C3.28 5.93 4.01 6.7 5.18 6.7H5.2C6.42 6.7 7.17 5.93 7.17 4.95ZM20.72 13.39C20.72 9.89 18.85 8.26 16.35 8.26C14.34 8.26 13.44 9.37 12.94 10.15V8.5H9.5C9.54 9.59 9.5 20 9.5 20H12.94V13.58C12.94 13.23 12.97 12.89 13.07 12.64C13.34 11.95 13.96 11.23 15 11.23C16.36 11.23 16.9 12.26 16.9 13.78V20H20.34V13.39H20.72Z"
+        fill="currentColor"
+      />
+    </svg>
+  );
+}
+
+function GitHubIcon() {
+  return (
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path
+        d="M12 2C6.48 2 2 6.6 2 12.26C2 16.79 4.87 20.63 8.84 21.98C9.34 22.08 9.52 21.76 9.52 21.49C9.52 21.24 9.51 20.41 9.5 19.52C6.73 20.14 6.14 18.3 6.14 18.3C5.68 17.08 5.03 16.75 5.03 16.75C4.12 16.11 5.1 16.12 5.1 16.12C6.1 16.19 6.63 17.18 6.63 17.18C7.52 18.75 8.96 18.3 9.54 18.03C9.63 17.37 9.89 16.92 10.18 16.66C7.97 16.4 5.65 15.5 5.65 11.47C5.65 10.32 6.04 9.38 6.69 8.63C6.59 8.37 6.25 7.31 6.79 5.87C6.79 5.87 7.63 5.59 9.5 6.9C10.29 6.68 11.14 6.57 12 6.57C12.86 6.57 13.71 6.68 14.5 6.9C16.37 5.59 17.21 5.87 17.21 5.87C17.75 7.31 17.41 8.37 17.31 8.63C17.96 9.38 18.35 10.32 18.35 11.47C18.35 15.51 16.03 16.39 13.81 16.65C14.17 16.98 14.5 17.61 14.5 18.57C14.5 19.95 14.49 21.15 14.49 21.49C14.49 21.76 14.67 22.09 15.18 21.98C19.15 20.63 22 16.79 22 12.26C22 6.6 17.52 2 12 2Z"
+        fill="currentColor"
       />
     </svg>
   );

@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { GlobalAtmosphere } from "@/components/ui/GlobalAtmosphere";
 import { CustomCursor } from "@/components/ui/CustomCursor";
+import { Navbar } from "@/components/layout/Navbar";
+import { LanguageProvider } from "@/lib/i18n";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -64,9 +66,12 @@ export default function RootLayout({
       style={{ colorScheme: "dark" }}
     >
       <body className="min-h-screen antialiased bg-transparent flex flex-col">
-        <GlobalAtmosphere />
-        <CustomCursor />
-        {children}
+        <LanguageProvider>
+          <GlobalAtmosphere />
+          <Navbar />
+          <CustomCursor />
+          {children}
+        </LanguageProvider>
       </body>
     </html>
   );

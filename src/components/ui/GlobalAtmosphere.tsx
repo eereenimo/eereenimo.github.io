@@ -16,12 +16,12 @@ export function GlobalAtmosphere() {
   const scaleY = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
   // ── Scroll-Linked Liquid Light Opacity ──
-  // Hero (Atmospheric 85%) -> Featured (focus dimmed 45%) -> Contact (quiet 35% presence)
-  const liquidOpacity = useTransform(scrollYProgress, [0, 0.3, 0.8, 1], [0.85, 0.45, 0.45, 0.35]);
+  // Hero (Atmospheric 85%) -> Featured (focus dimmed 45%) -> Contact (alive 62% presence)
+  const liquidOpacity = useTransform(scrollYProgress, [0, 0.3, 0.8, 1], [0.85, 0.45, 0.45, 0.62]);
 
   // ── Phase 6: Full-Visibility Network Field Opacity ──
-  // Stronger presence site-wide: Hero (32%) -> Featured (12%) -> Contact (10%)
-  const networkOpacity = useTransform(scrollYProgress, [0, 0.3, 0.8, 1], [0.32, 0.12, 0.12, 0.10]);
+  // Stronger presence site-wide: Hero (32%) -> Featured (12%) -> Contact (22%)
+  const networkOpacity = useTransform(scrollYProgress, [0, 0.3, 0.8, 1], [0.32, 0.12, 0.12, 0.22]);
 
   return (
     <>
@@ -75,18 +75,23 @@ export function GlobalAtmosphere() {
 
         {/* Minimal structural grid site-wide */}
         <div 
-          className="absolute inset-0 opacity-[0.012]"
+          className="absolute inset-0 opacity-[0.017]"
           style={{
             backgroundImage: `
               linear-gradient(to right, rgba(255,255,255,1) 1px, transparent 1px),
-              linear-gradient(to bottom, rgba(255,255,255,1) 1px, transparent 1px)
+              linear-gradient(to bottom, rgba(255,255,255,1) 1px, transparent 1px),
+              linear-gradient(60deg, rgba(255,255,255,0.5) 1px, transparent 1px),
+              linear-gradient(-60deg, rgba(255,255,255,0.5) 1px, transparent 1px)
             `,
-            backgroundSize: '80px 80px'
+            backgroundSize: "80px 80px, 80px 80px, 160px 160px, 160px 160px"
           }}
         />
         
         {/* Soft global vignette */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_40%,transparent_10%,rgba(5,5,8,0.7)_100%)]" />
+        <motion.div
+          className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_40%,transparent_10%,rgba(5,5,8,0.7)_100%)]"
+          style={{ opacity: useTransform(scrollYProgress, [0, 1], [1, 0.65]) }}
+        />
         
         {/* Cinematic noise overlay */}
         <div className="absolute inset-0 opacity-[0.012] mix-blend-overlay noise-overlay" />
@@ -133,8 +138,8 @@ function NetworkField({ scrollYProgress }: NetworkFieldProps) {
     canvas.height = height;
 
     // Sparse Config - Keeping same node count but increasing presence
-    const pointCount = 30;
-    const connectionRadius = 360; // Broadened radius for more networking density
+    const pointCount = 34;
+    const connectionRadius = 370; // Slight increase for richer structural geometry
     const points: { x: number; y: number; vx: number; vy: number; dx: number; dy: number; friction: number }[] = [];
 
     // Initialize sparse nodes
@@ -156,8 +161,8 @@ function NetworkField({ scrollYProgress }: NetworkFieldProps) {
       ctx.clearRect(0, 0, width, height);
       
       const sp = scrollYProgress.get();
-      // Floor the intensity so Contact remains alive (min 0.6)
-      const globalIntensity = 1.0 - (sp * 0.4); 
+      // Floor the intensity so Contact remains alive (min ~0.72)
+      const globalIntensity = 1.0 - (sp * 0.28); 
 
       // Update & Filter Ripples
       ripplesRef.current = ripplesRef.current.filter(r => {
@@ -239,10 +244,10 @@ function NetworkField({ scrollYProgress }: NetworkFieldProps) {
           const distNodes = Math.sqrt(Math.pow(renderX - r2x, 2) + Math.pow(renderY - r2y, 2));
 
           if (distNodes < connectionRadius) {
-            const baseLineAlpha = (1 - distNodes / connectionRadius) * 0.5; // Stronger baseline
+            const baseLineAlpha = (1 - distNodes / connectionRadius) * 0.52; // Slightly stronger baseline
             const finalLineAlpha = (baseLineAlpha + (activationAlpha * 0.5)) * globalIntensity;
             
-            ctx.strokeStyle = `rgba(108, 142, 255, ${finalLineAlpha})`;
+            ctx.strokeStyle = `rgba(214, 224, 255, ${finalLineAlpha})`;
             ctx.lineWidth = 1.0 + (activationAlpha * 0.8); // High-visibility thickening
             ctx.beginPath();
             ctx.moveTo(renderX, renderY);

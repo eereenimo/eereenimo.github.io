@@ -1,33 +1,28 @@
 "use client";
 
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
-import { useState, useEffect, useRef } from "react";
-
-const navLinks = [
-  { label: "Work",         href: "#work"         },
-  { label: "Capabilities", href: "#capabilities"  },
-  { label: "About",        href: "#about"         },
-  { label: "Contact",      href: "#contact"       },
-];
+import { useState, useEffect } from "react";
+import { useLanguage } from "@/lib/i18n";
+import { copy } from "@/data/translations";
 
 const EASE_OUT_EXPO = [0.16, 1, 0.3, 1];
 
 export function Navbar() {
   const { scrollY } = useScroll();
   const [scrolled,  setScrolled]  = useState(false);
-  const [hidden,    setHidden]    = useState(false);
-  const lastYRef                  = useRef(0);
   const [activeId,  setActiveId]  = useState("");
+  const { locale, toggleLocale } = useLanguage();
+  const t = copy[locale];
+  const navLinks = [
+    { label: t.nav.work, href: "#work" },
+    { label: t.nav.journey, href: "#journey" },
+    { label: t.nav.vision, href: "#vision" },
+    { label: t.nav.contact, href: "#contact" },
+  ];
 
-  // Scroll direction → hide/show nav
+  // Scroll depth → subtle glass/background shift
   useMotionValueEvent(scrollY, "change", (y) => {
     setScrolled(y > 48);
-    if (y > lastYRef.current && y > 120) {
-      setHidden(true);
-    } else {
-      setHidden(false);
-    }
-    lastYRef.current = y;
   });
 
   // Active section tracking via IntersectionObserver
@@ -56,8 +51,6 @@ export function Navbar() {
       role="banner"
       aria-label="Main navigation"
       className="fixed top-0 left-0 right-0 z-50"
-      animate={{ y: hidden ? -80 : 0 }}
-      transition={{ duration: 0.4, ease: EASE_OUT_EXPO as number[] }}
     >
       {/* Backdrop — transparent → blurred glass as user scrolls */}
       <motion.div
@@ -83,8 +76,8 @@ export function Navbar() {
       <div className="relative max-w-[1200px] mx-auto px-6 sm:px-10 flex items-center justify-between h-16">
         {/* Logo — initials mark */}
         <a
-          href="#"
-          aria-label="Eren Serdaroğlu — home"
+          href="#hero"
+          aria-label="Erenimo — home"
           id="nav-logo"
           className="group flex items-center gap-2.5 select-none"
         >
@@ -101,14 +94,10 @@ export function Navbar() {
           >
             ES
           </span>
-          <span
-            className={[
-              "hidden sm:block text-sm font-medium",
-              "text-[var(--color-text)] opacity-70",
-              "transition-opacity duration-200",
-              "group-hover:opacity-100",
-            ].join(" ")}
-          >
+          <span className="sm:hidden text-sm font-medium text-[var(--color-text)] opacity-75 transition-opacity duration-200 group-hover:opacity-100">
+            Eren S.
+          </span>
+          <span className="hidden sm:block text-sm font-medium text-[var(--color-text)] opacity-75 transition-opacity duration-200 group-hover:opacity-100">
             Eren Serdaroğlu
           </span>
         </a>
@@ -132,6 +121,8 @@ export function Navbar() {
           })}
         </nav>
 
+        <LanguageSwitch locale={locale} onToggle={toggleLocale} />
+
         {/* CTA — desktop */}
         <a
           id="nav-cta"
@@ -149,11 +140,11 @@ export function Navbar() {
           ].join(" ")}
         >
           <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-green-pulse)] animate-pulse" />
-          Available
+          {t.nav.available}
         </a>
 
         {/* Mobile menu — simplified anchor list */}
-        <MobileMenu />
+        <MobileMenu navLinks={navLinks} />
       </div>
     </motion.header>
   );
@@ -195,7 +186,9 @@ function NavLink({
 
 // ─── Mobile Menu ────────────────────────────────────────────────────────────
 
-function MobileMenu() {
+function MobileMenu({ navLinks }: { navLinks: { label: string; href: string }[] }) {
+  const { locale } = useLanguage();
+  const t = copy[locale];
   const [open, setOpen] = useState(false);
 
   return (
@@ -203,7 +196,7 @@ function MobileMenu() {
       {/* Hamburger button */}
       <button
         id="mobile-menu-toggle"
-        aria-label={open ? "Close menu" : "Open menu"}
+        aria-label={open ? t.nav.closeMenu : t.nav.openMenu}
         aria-expanded={open}
         onClick={() => setOpen((p) => !p)}
         className="w-10 h-10 flex flex-col items-center justify-center gap-1.5 rounded-lg hover:bg-white/5 transition-colors duration-200"
@@ -264,5 +257,49 @@ function MobileMenu() {
         </motion.a>
       </motion.div>
     </div>
+  );
+}
+
+function LanguageSwitch({
+  locale,
+  onToggle,
+}: {
+  locale: "en" | "tr";
+  onToggle: () => void;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onToggle}
+      aria-label="Toggle language"
+      className={[
+        "inline-flex items-center",
+        "h-9 rounded-full border border-[rgba(255,255,255,0.08)]",
+        "bg-[rgba(255,255,255,0.02)] backdrop-blur-md",
+        "px-1 transition-all duration-300 mr-2 md:mr-0",
+        "hover:border-[rgba(108,142,255,0.35)]",
+      ].join(" ")}
+    >
+      <span
+        className={[
+          "px-2.5 py-1 rounded-full text-[10px] font-mono tracking-[0.14em] uppercase transition-all duration-300",
+          locale === "tr"
+            ? "bg-[rgba(108,142,255,0.22)] text-[var(--color-text)]"
+            : "text-[var(--color-text-secondary)]",
+        ].join(" ")}
+      >
+        TR
+      </span>
+      <span
+        className={[
+          "px-2.5 py-1 rounded-full text-[10px] font-mono tracking-[0.14em] uppercase transition-all duration-300",
+          locale === "en"
+            ? "bg-[rgba(108,142,255,0.22)] text-[var(--color-text)]"
+            : "text-[var(--color-text-secondary)]",
+        ].join(" ")}
+      >
+        EN
+      </span>
+    </button>
   );
 }

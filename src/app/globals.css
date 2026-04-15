@@ -17,9 +17,9 @@
   --color-accent:       #00D4FF;
   --color-glow:         rgba(108, 142, 255, 0.15);
 
-  --color-text:         #F0F0F8;
-  --color-text-secondary: #6B6B80;
-  --color-text-muted:   #3A3A50;
+  --color-text:         #F4F4FA;
+  --color-text-secondary: #86869B;
+  --color-text-muted:   #50506A;
 
   --color-green-pulse:  #22C55E;
 
@@ -127,7 +127,7 @@ body {
 .text-body {
   font-size: clamp(1rem, 1.2vw, 1.125rem);
   line-height: 1.75;
-  color: color-mix(in srgb, var(--color-text) 80%, transparent);
+  color: color-mix(in srgb, var(--color-text) 86%, transparent);
 }
 
 /* ============================================================

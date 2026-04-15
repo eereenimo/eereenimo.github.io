@@ -2,13 +2,19 @@
 
 import { useRef } from "react";
 import { motion, useScroll, useTransform, useMotionTemplate } from "framer-motion";
-import { projects, type Project } from "@/data/projects";
+import { projectsByLocale, type Project } from "@/data/projects";
 import { SectionEyebrow } from "@/components/ui/SectionEyebrow";
 import { AnimatedReveal, StaggerContainer, staggerItem } from "@/components/ui/AnimatedReveal";
+import { useLanguage } from "@/lib/i18n";
+import { copy } from "@/data/translations";
 
 const EASE_EXPO = [0.16, 1, 0.3, 1];
 
 export function FeaturedWork() {
+  const { locale } = useLanguage();
+  const t = copy[locale].work;
+  const projects = projectsByLocale[locale];
+
   return (
     <section
       id="work"
@@ -28,12 +34,12 @@ export function FeaturedWork() {
       <div className="max-w-[1200px] mx-auto px-6 sm:px-10">
         {/* Section header */}
         <AnimatedReveal className="mb-20 sm:mb-24">
-          <SectionEyebrow className="mb-5">Selected Work</SectionEyebrow>
+          <SectionEyebrow className="mb-5">{t.eyebrow}</SectionEyebrow>
           <h2 className="text-headline max-w-md text-[var(--color-text)]">
-            Work that{" "}
-            <span className="text-[var(--color-primary)] opacity-80">ships</span>
-            {" "}and{" "}
-            <span className="text-[var(--color-primary)] opacity-80">scales</span>
+            {t.titleStart}{" "}
+            <span className="text-[var(--color-primary)] opacity-80">{t.titleShip}</span>
+            {t.titleAnd ? <> {" "}{t.titleAnd} </> : " "}
+            <span className="text-[var(--color-primary)] opacity-80">{t.titleScale}</span>
           </h2>
         </AnimatedReveal>
 
@@ -45,6 +51,7 @@ export function FeaturedWork() {
                 project={project}
                 index={index}
                 flip={index % 2 !== 0}
+                locale={locale}
               />
             </div>
           ))}
@@ -60,10 +67,12 @@ interface ProjectModuleProps {
   project: Project;
   index: number;
   flip: boolean;
+  locale: "en" | "tr";
 }
 
-function ProjectModule({ project, index, flip }: ProjectModuleProps) {
+function ProjectModule({ project, index, flip, locale }: ProjectModuleProps) {
   const containerRef = useRef<HTMLElement>(null);
+  const t = copy[locale].work;
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -152,7 +161,7 @@ function ProjectModule({ project, index, flip }: ProjectModuleProps) {
           {/* Problem */}
           <motion.div variants={staggerItem} className="space-y-1.5">
             <p className="text-[10px] font-mono tracking-[0.16em] uppercase text-[var(--color-primary)] opacity-50">
-              The Problem
+              {t.problem}
             </p>
             <p className="text-body text-[var(--color-text-secondary)] leading-relaxed">
               {project.problem}
@@ -162,7 +171,7 @@ function ProjectModule({ project, index, flip }: ProjectModuleProps) {
           {/* Solution */}
           <motion.div variants={staggerItem} className="space-y-1.5">
             <p className="text-[10px] font-mono tracking-[0.16em] uppercase text-[var(--color-primary)] opacity-50">
-              The Solution
+              {t.solution}
             </p>
             <p className="text-body text-[var(--color-text-secondary)] leading-relaxed">
               {project.solution}
@@ -203,7 +212,7 @@ function ProjectModule({ project, index, flip }: ProjectModuleProps) {
                   "transition-colors duration-300",
                 ].join(" ")}
               >
-                Live Project
+                {t.live}
                 {/* Subtle underline shimmer */}
                 <span className="absolute -bottom-1 left-0 w-0 h-px bg-[var(--color-primary)] opacity-50 transition-[width] duration-300 group-hover:w-full" />
                 <ExternalLink />
@@ -221,7 +230,7 @@ function ProjectModule({ project, index, flip }: ProjectModuleProps) {
                   "transition-colors duration-300",
                 ].join(" ")}
               >
-                GitHub
+                {t.github}
                 {/* Subtle underline expansion */}
                 <span className="absolute -bottom-1 left-0 w-0 h-px bg-[rgba(255,255,255,0.4)] transition-[width] duration-300 group-hover:w-full" />
                 <ExternalLink />
