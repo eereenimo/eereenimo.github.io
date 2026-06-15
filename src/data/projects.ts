@@ -21,15 +21,15 @@ export const projectsByLocale = {
       tag: "AI Product · 2025",
       title: "TonePilot",
       problem:
-        "Communication is one of the highest-leverage skills in any organization — yet most professionals struggle to consistently strike the right tone across contexts, whether it's stakeholder emails, slack messages, or client-facing copy.",
+        "Every day, professionals spend significant time rewriting messages to ensure they sound clear, confident, and appropriate for their audience. Small changes in tone can dramatically affect how communication is perceived, yet achieving that consistency remains difficult.",
       solution:
-        "TonePilot is an AI-powered communication assistant that rewrites, refines, and improves text with emotional intelligence. Built with a modern, minimal UI and real-time OpenAI integration, it gives users a history of transformations and nuanced tone selection.",
-      stack: ["Next.js", "TypeScript", "Tailwind CSS", "OpenAI API"],
+        "TonePilot is an AI-powered writing assistant that helps users improve communication through intelligent tone transformation and contextual rewriting. Built with Next.js, OpenAI, and a modern real-time experience, it enables users to experiment with different communication styles, compare revisions, and craft more effective messages with confidence.",
+      stack: ["Next.js", "TypeScript", "Tailwind CSS", "OpenAI API", "Python"],
       accentColor: "#6C8EFF",
       visualLabel: "AI",
       images: [
-        "/projects/tonepilot/tonepilot1.webp",
-        "/projects/tonepilot/tonepilot-2.webp"
+        "/projects/tonepilot/tonepilot1.jpg",
+        "/projects/tonepilot/tonepilot-2.jpg"
       ],
     },
     {
@@ -38,35 +38,35 @@ export const projectsByLocale = {
       tag: "Corporate · 2024",
       title: "Barsan Website Redesign",
       problem:
-        "A well-established logistics company with a fragmented digital presence: outdated frontend, no unified content system, and a codebase that made simple content updates a developer task.",
+        "Barsan Global Logistics needed a modern, scalable, and maintainable digital platform. The existing website suffered from outdated frontend architecture, fragmented content management workflows, and limited flexibility for future growth.",
       solution:
-        "A full architecture rebuild — new component-driven frontend in Next.js, a headless CMS integration via Strapi, containerized deployment with Docker, and a design system that scales with the company's content needs without engineering intervention.",
+        "I contributed to the redesign and redevelopment of the corporate website using Next.js and a component-driven architecture. The project included CMS integration with Strapi, Docker-based deployment workflows, reusable UI systems, and a scalable content structure that enables non-technical teams to manage content efficiently.",
       stack: ["Next.js", "Strapi CMS", "Tailwind CSS", "Docker"],
       accentColor: "#00D4FF",
       visualLabel: "CMS",
       images: [
-        "/projects/barsan/barsan-1.webp",
-        "/projects/barsan/barsan-2.webp",
-        "/projects/barsan/barsan-3.webp",
-        "/projects/barsan/barsan-4.webp",
-        "/projects/barsan/barsan-5.webp"
+        "/projects/barsan/barsan-1.png",
+        "/projects/barsan/barsan-2.png",
+        "/projects/barsan/barsan-3.png",
+        "/projects/barsan/barsan-4.png",
+        "/projects/barsan/barsan-5.png"
       ],
     },
     {
       id: "mobile-ai",
       number: "03",
       tag: "Mobile · 2025",
-      title: "Mobile AI App",
+      title: "TÜBİTAK 2209-A Research Project",
       problem:
-        "Building a mobile AI product means solving two hard problems simultaneously: designing an intuitive cross-platform UX that feels native, and architecting a real-time backend that's fast enough to keep up with user interactions.",
+        "Finding reliable student accommodation is often a fragmented and time-consuming process. Students must compare multiple sources, verify information manually, and navigate inconsistent data when searching for suitable housing options.",
       solution:
-        "A React Native application with Firebase as the real-time backend layer and integrated AI APIs for intelligent features. Focus on mobile UX patterns, offline-first architecture, and seamless state management across the native/web boundary.",
+        "Developed as a TÜBİTAK 2209-A supported university research project, this platform centralizes student accommodation data and provides an intuitive mobile experience for discovering and comparing housing options. The application combines a React Native frontend with Firebase infrastructure to deliver real-time data management, scalable architecture, and a seamless cross-platform experience.",
       stack: ["React Native", "Firebase", "TypeScript", "AI APIs"],
       accentColor: "#8B5CF6",
       visualLabel: "APP",
       images: [
-        "/projects/mobile-ai/mobile-1.webp",
-        "/projects/mobile-ai/mobile-2.webp"
+        "/projects/mobile-ai/mobile-1.jpg",
+        "/projects/mobile-ai/mobile-2.jpg"
       ],
     },
   ] as Project[],
@@ -77,15 +77,15 @@ export const projectsByLocale = {
       tag: "Yapay Zeka Urunu · 2025",
       title: "TonePilot",
       problem:
-        "Iletisim, kurumlarda en yuksek etkili yetkinliklerden biri; ancak profesyoneller paydas e-postalari, Slack mesajlari veya musteriye donuk metinlerde dogru tonu surekli yakalamakta zorlanir.",
+        "Profesyonel iletişimde doğru tonu yakalamak her zaman kolay değildir. E-postalar, müşteri mesajları veya ekip içi yazışmalar gibi farklı senaryolarda; mesajın net, profesyonel ve amacına uygun olması için kullanıcılar çoğu zaman metinlerini tekrar tekrar düzenlemek zorunda kalır.",
       solution:
-        "TonePilot; metinleri duygusal zekayla yeniden yazan, iyilestiren ve netlestiren yapay zeka destekli bir iletisim asistanidir. Modern ve minimal arayuz, gercek zamanli OpenAI entegrasyonu, donusum gecmisi ve nufansli ton secimleri sunar.",
+        "TonePilot, kullanıcıların yazılı iletişimlerini yapay zekâ desteğiyle geliştirmelerine yardımcı olan bir platformdur. OpenAI entegrasyonu ve gerçek zamanlı çalışan modern arayüzü sayesinde metinleri yeniden yazar, farklı ton alternatifleri sunar ve yapılan değişikliklerin geçmişini takip ederek daha etkili iletişim kurulmasını sağlar.",
       stack: ["Next.js", "TypeScript", "Tailwind CSS", "OpenAI API"],
       accentColor: "#6C8EFF",
       visualLabel: "AI",
       images: [
-        "/projects/tonepilot/tonepilot1.webp",
-        "/projects/tonepilot/tonepilot-2.webp"
+        "/projects/tonepilot/tonepilot1.jpg",
+        "/projects/tonepilot/tonepilot-2.jpg"
       ],
     },
     {
@@ -94,35 +94,35 @@ export const projectsByLocale = {
       tag: "Kurumsal · 2024",
       title: "Barsan.com Yeniden Tasarim",
       problem:
-        "Koklu bir lojistik markasinin parcalanmis dijital yapisi: eski bir arayuz, birlesik icerik sistemi eksikligi ve basit guncellemeleri bile gelistirici bagimli hale getiren bir kod tabani.",
+        "Barsan Global Logistics, büyüyen içerik ihtiyaçlarını karşılayabilecek, ölçeklenebilir ve sürdürülebilir bir dijital altyapıya ihtiyaç duyuyordu. Mevcut yapı içerik güncellemelerini zorlaştırıyor, geliştirme süreçlerini yavaşlatıyor ve uzun vadeli büyüme için yeterli esnekliği sunmuyordu.",
       solution:
-        "Mimariyi bastan kurduk: Next.js ile bilesen odakli yeni frontend, Strapi tabanli headless CMS entegrasyonu, Docker ile konteyner dagitimi ve muhendislik bagimsiz icerik buyumesini destekleyen bir tasarim sistemi.",
+        "Geliştirme ekibinin bir parçası olarak kurumsal web sitesinin yeniden yapılandırılması sürecinde görev aldım. Projede Next.js, Strapi, Tailwind CSS ve Docker teknolojileri kullanılarak bileşen tabanlı modern bir mimari oluşturuldu. Bu sayede içerik yönetimi kolaylaştırıldı, performans artırıldı ve gelecekteki geliştirmeler için güçlü bir temel sağlandı.",
       stack: ["Next.js", "Strapi CMS", "Tailwind CSS", "Docker"],
       accentColor: "#00D4FF",
       visualLabel: "CMS",
       images: [
-        "/projects/barsan/barsan-1.webp",
-        "/projects/barsan/barsan-2.webp",
-        "/projects/barsan/barsan-3.webp",
-        "/projects/barsan/barsan-4.webp",
-        "/projects/barsan/barsan-5.webp"
+        "/projects/barsan/barsan-1.jpg",
+        "/projects/barsan/barsan-2.jpg",
+        "/projects/barsan/barsan-3.jpg",
+        "/projects/barsan/barsan-4.jpg",
+        "/projects/barsan/barsan-5.jpg"
       ],
     },
     {
       id: "mobile-ai",
       number: "03",
       tag: "Mobil · 2025",
-      title: "Mobil AI Uygulamasi",
+      title: "TÜBİTAK 2209-A Araştırma Projesi",
       problem:
-        "Mobil bir yapay zeka urunu gelistirmek iki zor problemi ayni anda cozmeyi gerektirir: yerel hisseden sezgisel capraz platform deneyimi ve kullanici etkilesimine yetisecek kadar hizli gercek zamanli backend mimarisi.",
+        "Öğrenciler için güvenilir konaklama seçeneklerine ulaşmak çoğu zaman dağınık kaynaklar nedeniyle zaman alıcı ve karmaşık bir süreçtir. Farklı platformlardan bilgi toplamak, doğruluğunu kontrol etmek ve seçenekleri karşılaştırmak önemli bir zorluk oluşturmaktadır.",
       solution:
-        "Firebase destekli gercek zamanli backend ve AI API entegrasyonlariyla React Native bir uygulama gelistirildi. Odak: mobil UX kaliplari, offline-first yapi ve native/web siniri boyunca kesintisiz durum yonetimi.",
+        "Bu proje, TÜBİTAK 2209-A desteği kapsamında geliştirilen bir araştırma ve mobil uygulama projesidir. Amaç, öğrenci konaklama verilerini tek bir platformda toplayarak kullanıcıların yurt ve konaklama seçeneklerini daha kolay keşfetmesini sağlamaktır. React Native ve Firebase teknolojileri kullanılarak geliştirilen uygulama, gerçek zamanlı veri yönetimi, ölçeklenebilir altyapı ve platformlar arası tutarlı bir kullanıcı deneyimi sunmaktadır.",
       stack: ["React Native", "Firebase", "TypeScript", "AI APIs"],
       accentColor: "#8B5CF6",
       visualLabel: "APP",
       images: [
-        "/projects/mobile-ai/mobile-1.webp",
-        "/projects/mobile-ai/mobile-2.webp"
+        "/projects/mobile-ai/mobile-1.jpg",
+        "/projects/mobile-ai/mobile-2.jpg"
       ],
     },
   ] as Project[],
