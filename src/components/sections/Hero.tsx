@@ -125,7 +125,7 @@ export function Hero() {
             </motion.div>
           </div>
 
-          {/* Right Column: Architecture Slab (Product Architecture) */}
+                  {/* Right Column: Architecture Slab (Product Architecture) */}
           <div className="lg:col-span-5 hidden lg:flex justify-end items-center relative perspective-[1200px]">
             <motion.div
               initial={{ opacity: 0, scale: 0.98, x: 20, filter: "blur(12px)" }}
@@ -139,38 +139,94 @@ export function Hero() {
                 transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
                 className="relative w-full h-full flex items-center justify-center"
               >
-                {/* Architecture Slab */}
-                <div className="relative w-full h-full rounded-2xl border border-[rgba(255,255,255,0.04)] bg-[rgba(13,13,20,0.2)] backdrop-blur-2xl shadow-[0_48px_96px_rgba(0,0,0,0.4),inset_0_1px_rgba(255,255,255,0.02)] overflow-hidden flex flex-col p-8 font-mono section-eyebrow">
+                {/* Architecture Slab (Code Panel) */}
+                <div className="relative w-full h-full rounded-2xl border border-[rgba(108,142,255,0.15)] bg-[rgba(13,13,20,0.65)] backdrop-blur-2xl shadow-[0_48px_96px_rgba(0,0,0,0.4),inset_0_1px_rgba(255,255,255,0.02)] overflow-hidden flex flex-col p-6 md:p-8 font-mono section-eyebrow transition-all duration-300 hover:scale-[1.01] hover:border-[rgba(108,142,255,0.4)] hover:shadow-[0_48px_96px_rgba(0,0,0,0.55),0_0_40px_rgba(108,142,255,0.2)]">
                   
-                  {/* Subtle Code Glimpse (Reduced contrast for background hint feel) */}
-                  <div className="space-y-4 opacity-[0.25] select-none pointer-events-none">
-                    <div className="flex gap-4">
-                      <span className="text-[rgba(255,255,255,0.05)] text-[10px]">01</span>
-                      <p className="text-[12px] tracking-tight text-[rgba(255,255,255,0.2)]">
-                        <span className="text-[rgba(255,255,255,0.1)]">export</span> <span className="text-[rgba(108,142,255,0.3)]">interface</span> AIProductEngine {"{"}
-                      </p>
+                  {/* Terminal Header */}
+                  <div className="flex items-center justify-between mb-5 pb-3 border-b border-[rgba(255,255,255,0.06)] flex-shrink-0 select-none">
+                    <div className="flex items-center gap-1.5">
+                      <span className="w-2.5 h-2.5 rounded-full bg-[#FF5F56] opacity-80" />
+                      <span className="w-2.5 h-2.5 rounded-full bg-[#FFBD2E] opacity-80" />
+                      <span className="w-2.5 h-2.5 rounded-full bg-[#27C93F] opacity-80" />
                     </div>
-                    <div className="flex gap-4 pl-4">
-                      <span className="text-[rgba(255,255,255,0.05)] text-[10px]">02</span>
-                      <p className="text-[12px] tracking-tight text-[rgba(255,255,255,0.15)]">
-                        model: <span className="text-[rgba(0,212,255,0.2)]">"TonePilot-01"</span>;
-                      </p>
-                    </div>
-                    <div className="flex gap-4 pl-4">
-                      <span className="text-[rgba(255,255,255,0.05)] text-[10px]">03</span>
-                      <p className="text-[12px] tracking-tight text-[rgba(255,255,255,0.15)]">
-                        integrity: <span className="text-[rgba(108,142,255,0.3)]">0.98</span>;
-                      </p>
-                    </div>
-                    <div className="flex gap-4 pl-4">
-                      <span className="text-[rgba(255,255,255,0.05)] text-[10px]">04</span>
-                      <p className="text-[12px] tracking-tight text-[rgba(255,255,255,0.15)]">
-                        optimized: <span className="text-[rgba(34,197,94,0.3)]">true</span>;
-                      </p>
-                    </div>
-                    <div className="flex gap-4">
-                      <span className="text-[rgba(255,255,255,0.05)] text-[10px]">05</span>
-                      <p className="text-[12px] tracking-tight text-[rgba(255,255,255,0.1)]">{"}"}</p>
+                    <span className="text-[9px] font-mono tracking-[0.2em] text-[rgba(255,255,255,0.35)] uppercase">
+                      ERENIMO.DEV
+                    </span>
+                  </div>
+
+                  {/* Code Snippet with Syntax Highlighting */}
+                  <div className="flex-1 flex flex-col justify-center font-mono text-[11px] md:text-[12px] leading-relaxed text-[rgba(255,255,255,0.85)] opacity-95">
+                    <div className="space-y-1.5 md:space-y-2">
+                      <div className="flex gap-3">
+                        <span className="w-5 text-[rgba(255,255,255,0.2)] text-right select-none text-[10px]">01</span>
+                        <p>
+                          <span className="text-[#FF7B72]">const</span> <span className="text-[#E5C07B]">developer</span> = &#123;
+                        </p>
+                      </div>
+                      <div className="flex gap-3">
+                        <span className="w-5 text-[rgba(255,255,255,0.2)] text-right select-none text-[10px]">02</span>
+                        <p className="pl-4">
+                          <span className="text-[#6C8EFF]">name</span>: <span className="text-[#93C5FD]">"Eren Serdaroğlu"</span>,
+                        </p>
+                      </div>
+                      <div className="flex gap-3">
+                        <span className="w-5 text-[rgba(255,255,255,0.2)] text-right select-none text-[10px]">03</span>
+                        <p className="pl-4">
+                          <span className="text-[#8B5CF6]">role</span>: <span className="text-[#93C5FD]">"Full-Stack Engineer"</span>,
+                        </p>
+                      </div>
+                      <div className="flex gap-3">
+                        <span className="w-5 text-[rgba(255,255,255,0.2)] text-right select-none text-[10px]">04</span>
+                        <p className="pl-4">
+                          <span className="text-[#00D4FF]">stack</span>: [
+                        </p>
+                      </div>
+                      <div className="flex gap-3">
+                        <span className="w-5 text-[rgba(255,255,255,0.2)] text-right select-none text-[10px]">05</span>
+                        <p className="pl-8">
+                          <span className="text-[#93C5FD]">"React"</span>,
+                        </p>
+                      </div>
+                      <div className="flex gap-3">
+                        <span className="w-5 text-[rgba(255,255,255,0.2)] text-right select-none text-[10px]">06</span>
+                        <p className="pl-8">
+                          <span className="text-[#93C5FD]">"Next.js"</span>,
+                        </p>
+                      </div>
+                      <div className="flex gap-3">
+                        <span className="w-5 text-[rgba(255,255,255,0.2)] text-right select-none text-[10px]">07</span>
+                        <p className="pl-8">
+                          <span className="text-[#93C5FD]">"TypeScript"</span>,
+                        </p>
+                      </div>
+                      <div className="flex gap-3">
+                        <span className="w-5 text-[rgba(255,255,255,0.2)] text-right select-none text-[10px]">08</span>
+                        <p className="pl-8">
+                          <span className="text-[#93C5FD]">"Node.js"</span>
+                        </p>
+                      </div>
+                      <div className="flex gap-3">
+                        <span className="w-5 text-[rgba(255,255,255,0.2)] text-right select-none text-[10px]">09</span>
+                        <p className="pl-4">
+                          ],
+                        </p>
+                      </div>
+                      <div className="flex gap-3">
+                        <span className="w-5 text-[rgba(255,255,255,0.2)] text-right select-none text-[10px]">10</span>
+                        <p className="pl-4">
+                          <span className="text-[#E5C07B]">mindset</span>: <span className="text-[#93C5FD]">"Build. Learn. Scale."</span>
+                        </p>
+                      </div>
+                      <div className="flex gap-3">
+                        <span className="w-5 text-[rgba(255,255,255,0.2)] text-right select-none text-[10px]">11</span>
+                        <p>&#125;</p>
+                      </div>
+                      <div className="flex gap-3">
+                        <span className="w-5 text-[rgba(255,255,255,0.2)] text-right select-none text-[10px]">12</span>
+                        <p className="mt-1">
+                          <span className="text-[#FF7B72]">export default</span> <span className="text-[#E5C07B]">developer</span>
+                        </p>
+                      </div>
                     </div>
                   </div>
 

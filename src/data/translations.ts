@@ -21,21 +21,46 @@ export const copy = {
       github: "GitHub",
     },
     journey: {
-      eyebrow: "Academic Journey",
-      titleStart: "The foundation that grew into modern",
-      titleMid: "frontend",
-      titleEnd: "and",
-      titleEndAccent: "full-stack",
-      titleSuffix: "work.",
-      baseTitle: "High School Base",
-      baseText:
-        "I studied in a field connected to web, digital, and information technologies, where my interest in web development first started.",
-      selfTitle: "Self-Learning Phase",
-      selfText:
-        "After that foundation, I improved through self-learning, building practical projects, and turning theory into shipped work.",
-      currentTitle: "Current Direction",
-      currentText:
-        "Over time, that journey evolved into modern frontend and full-stack development with a strong focus on product quality and execution.",
+      eyebrow: "Journey",
+      titleMain: "Journey.",
+      titleSub: "The process that carried me to today's engineering.",
+      steps: [
+        {
+          number: "01",
+          title: "High School",
+          period: "2015 - 2019",
+          subtitle: "First Lines of Code",
+          text: "My education in web development, information technologies, and digital systems started here. I discovered my passion for building things on the web.",
+        },
+        {
+          number: "02",
+          title: "Dokuz Eylül University",
+          period: "2019 - 2025",
+          subtitle: "Computer Programming & Science",
+          text: "Acquired academic discipline, algorithms, data structures, and computer science fundamentals. Learned how to build structured and efficient systems.",
+        },
+        {
+          number: "03",
+          title: "First Projects & Self-Improvement",
+          period: "2022 - 2023",
+          subtitle: "Independent Building",
+          text: "Dived deep into React, Node.js, and modern web architectures. Built open-source tools, mini-apps, and developed a hands-on production mindset.",
+        },
+        {
+          number: "04",
+          title: "Barsan Global Logistics",
+          period: "2024",
+          subtitle: "Enterprise Engineering",
+          text: "Redesigned corporate platform and architected high-performance headless CMS solutions, Docker containers, and scalable design systems for global reach.",
+        },
+        {
+          number: "05",
+          title: "Today's Vision",
+          period: "2025 & Beyond",
+          subtitle: "Premium Product Crafting",
+          text: "Creating performant, human-centric, and exceptionally polished digital products that merge technical rigour with absolute aesthetic precision.",
+        },
+      ],
     },
     vision: {
       eyebrow: "Vision",
@@ -106,20 +131,45 @@ export const copy = {
     },
     journey: {
       eyebrow: "Akademik Yolculuk",
-      titleStart: "Beni modern",
-      titleMid: "frontend",
-      titleEnd: "ve",
-      titleEndAccent: "full-stack",
-      titleSuffix: "gelistirmeye tasiyan temel.",
-      baseTitle: "Lise Temeli",
-      baseText:
-        "Lise doneminde web, dijital ve bilgi teknolojileriyle ilgili bir alanda egitim aldim ve web gelistirmeye olan ilgim bu surecte basladi.",
-      selfTitle: "Kendi Kendine Gelisim",
-      selfText:
-        "Bu temel sonrasinda kendimi ogrenme sureci, pratik projeler ve uretilen isler uzerinden gelistirdim.",
-      currentTitle: "Bugunku Yonelim",
-      currentText:
-        "Zamanla bu yolculuk; urun kalitesi ve uygulama disiplinini merkeze alan modern frontend ve full-stack gelistirmeye evrildi.",
+      titleMain: "Journey.",
+      titleSub: "Beni bugünkü mühendisliğe taşıyan süreç.",
+      steps: [
+        {
+          number: "01",
+          title: "Lise",
+          period: "2017 - 2021",
+          subtitle: "İlk Kod Satırları",
+          text: "Web teknolojileri, bilişim ve dijital sistemler eğitimi alarak web geliştirme dünyasıyla tanıştığım ve ilk tasarımlarımı hayata geçirdiğim dönem.",
+        },
+        {
+          number: "02",
+          title: "Dokuz Eylül Üniversitesi",
+          period: "2021 - Günümüz",
+          subtitle: "Bilgisayar Programcılığı ve Temelleri",
+          text: "Akademik disiplin, temel bilgisayar bilimleri prensipleri, algoritmalar ve veri yapıları alanında teorik ve pratik bir zemin kazandığım üniversite eğitimi.",
+        },
+        {
+          number: "03",
+          title: "İlk Projeler ve Kendini Geliştirme",
+          period: "2022 - 2023",
+          subtitle: "Bağımsız Geliştirme Süreci",
+          text: "React, Node.js ve modern web mimarilerini derinlemesine öğrenerek çok sayıda pratik proje ürettiğim, teoriyi çalışan kodlara dönüştürdüğüm evre.",
+        },
+        {
+          number: "04",
+          title: "Barsan Global",
+          period: "2024",
+          subtitle: "Kurumsal Mühendislik Deneyimi",
+          text: "Kurumsal Next.js mimarileri, headless CMS (Strapi) entegrasyonları, Dockerizasyon ve global içerik sistemleri tasarlayarak profesyonel standartlarda çalıştığım süreç.",
+        },
+        {
+          number: "05",
+          title: "Bugünkü Vizyon",
+          period: "2025 & Sonrası",
+          subtitle: "Premium Ürün Mühendisliği",
+          text: "Sadece çalışan değil, aynı zamanda hissettiren ürünler; performans odaklı, göz alıcı ve zarafetle şekillendirilmiş üst düzey dijital deneyimler üretme odağım.",
+        },
+      ],
     },
     vision: {
       eyebrow: "Vizyon",
