@@ -10,6 +10,7 @@ export interface Project {
   githubUrl?: string;
   accentColor: string;
   visualLabel: string; // Large decorative text behind the mockup area
+  images: string[];
 }
 
 export const projectsByLocale = {
@@ -26,6 +27,10 @@ export const projectsByLocale = {
       stack: ["Next.js", "TypeScript", "Tailwind CSS", "OpenAI API"],
       accentColor: "#6C8EFF",
       visualLabel: "AI",
+      images: [
+        "/projects/tonepilot/tonepilot1.webp",
+        "/projects/tonepilot/tonepilot-2.webp"
+      ],
     },
     {
       id: "barsan",
@@ -39,6 +44,13 @@ export const projectsByLocale = {
       stack: ["Next.js", "Strapi CMS", "Tailwind CSS", "Docker"],
       accentColor: "#00D4FF",
       visualLabel: "CMS",
+      images: [
+        "/projects/barsan/barsan-1.webp",
+        "/projects/barsan/barsan-2.webp",
+        "/projects/barsan/barsan-3.webp",
+        "/projects/barsan/barsan-4.webp",
+        "/projects/barsan/barsan-5.webp"
+      ],
     },
     {
       id: "mobile-ai",
@@ -52,6 +64,10 @@ export const projectsByLocale = {
       stack: ["React Native", "Firebase", "TypeScript", "AI APIs"],
       accentColor: "#8B5CF6",
       visualLabel: "APP",
+      images: [
+        "/projects/mobile-ai/mobile-1.webp",
+        "/projects/mobile-ai/mobile-2.webp"
+      ],
     },
   ] as Project[],
   tr: [
@@ -67,6 +83,10 @@ export const projectsByLocale = {
       stack: ["Next.js", "TypeScript", "Tailwind CSS", "OpenAI API"],
       accentColor: "#6C8EFF",
       visualLabel: "AI",
+      images: [
+        "/projects/tonepilot/tonepilot1.webp",
+        "/projects/tonepilot/tonepilot-2.webp"
+      ],
     },
     {
       id: "barsan",
@@ -80,6 +100,13 @@ export const projectsByLocale = {
       stack: ["Next.js", "Strapi CMS", "Tailwind CSS", "Docker"],
       accentColor: "#00D4FF",
       visualLabel: "CMS",
+      images: [
+        "/projects/barsan/barsan-1.webp",
+        "/projects/barsan/barsan-2.webp",
+        "/projects/barsan/barsan-3.webp",
+        "/projects/barsan/barsan-4.webp",
+        "/projects/barsan/barsan-5.webp"
+      ],
     },
     {
       id: "mobile-ai",
@@ -93,6 +120,10 @@ export const projectsByLocale = {
       stack: ["React Native", "Firebase", "TypeScript", "AI APIs"],
       accentColor: "#8B5CF6",
       visualLabel: "APP",
+      images: [
+        "/projects/mobile-ai/mobile-1.webp",
+        "/projects/mobile-ai/mobile-2.webp"
+      ],
     },
   ] as Project[],
 };
