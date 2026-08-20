@@ -9,74 +9,97 @@ export const copy = {
       openMenu: "Open menu",
       closeMenu: "Close menu",
     },
+
     hero: {
       availability: "Available for new opportunities",
       role: "Full-Stack Engineer.",
       statement:
-        "I architect and build digital products that balance elegant engineering with premium visual polish. Focused on performance, scalability, and exceptional user experiences.",
+        "I build digital products where thoughtful engineering meets a strong visual identity. I care about performance, scalability, and creating experiences that are clear, useful, and enjoyable to use.",
       workCta: "View My Work",
       contactCta: "Get in Touch",
       scroll: "Scroll",
       linkedin: "LinkedIn",
       github: "GitHub",
     },
+
     journey: {
       eyebrow: "Journey",
       titleMain: "Journey.",
-      titleSub: "The process that carried me to today's engineering.",
+      titleSub:
+        "From curiosity to building products with purpose.",
+
       steps: [
         {
           number: "01",
           title: "High School",
           period: "2015 - 2019",
-          subtitle: "First Lines of Code",
-          text: "My education in web development, information technologies, and digital systems started here. I discovered my passion for building things on the web.",
+          subtitle: "Where It Started",
+          text:
+            "This is where my interest in technology began to take shape. I started exploring web development and digital systems, learning by taking things apart, rebuilding them, and gradually writing my first lines of code.",
         },
+
         {
           number: "02",
           title: "Dokuz Eylül University",
           period: "2019 - 2025",
-          subtitle: "Computer Programming & Science",
-          text: "Acquired academic discipline, algorithms, data structures, and computer science fundamentals. Learned how to build structured and efficient systems.",
+          subtitle: "Computer Programming & Computer Science",
+          text:
+            "University gave me the foundations behind the code: algorithms, data structures, software development, and problem solving. More importantly, it taught me to understand a problem before jumping straight to a solution.",
         },
+
         {
           number: "03",
-          title: "First Projects & Self-Improvement",
+          title: "Building & Learning",
           period: "2022 - 2023",
-          subtitle: "Independent Building",
-          text: "Dived deep into React, Node.js, and modern web architectures. Built open-source tools, mini-apps, and developed a hands-on production mindset.",
+          subtitle: "Learning Through Projects",
+          text:
+            "I moved beyond tutorials and started building projects of my own. React, Node.js, databases, APIs, and mobile development became tools for turning ideas into working products and learning through real problems.",
         },
+
         {
           number: "04",
           title: "Barsan Global Logistics",
           period: "2024",
-          subtitle: "Enterprise Engineering",
-          text: "Redesigned corporate platform and architected high-performance headless CMS solutions, Docker containers, and scalable design systems for global reach.",
+          subtitle: "Professional Experience",
+          text:
+            "I worked in a real production environment where frontend development met CMS architecture, Docker, databases, and content systems. This experience taught me to think beyond individual features and consider how the whole system works together.",
         },
+
         {
           number: "05",
-          title: "Today's Vision",
+          title: "Building With Intent",
           period: "2025 & Beyond",
-          subtitle: "Premium Product Crafting",
-          text: "Creating performant, human-centric, and exceptionally polished digital products that merge technical rigour with absolute aesthetic precision.",
+          subtitle: "Where I Am Now",
+          text:
+            "Today, I focus on building products that are useful first and polished without losing that purpose. I care about understanding the problem, choosing the right technology, and making every part of the final experience feel intentional.",
         },
       ],
     },
+
     vision: {
       eyebrow: "Vision",
-      titleStart: "I build digital products that feel",
-      precise: "precise",
-      human: "human",
-      durable: "durable",
+
+      titleStart: "I care about what a product",
+      precise: "solves",
+      human: "how it works",
+      durable: "and how it evolves",
+
       body:
-        "My direction is product-minded: craft interfaces that carry a clear point of view, keep complexity behind the scenes, and turn advanced technology into calm, confident experiences. I care about systems that scale, details that hold up under real use, and products that stay elegant as they grow.",
-      clarityTitle: "Product Clarity",
-      clarityText: "Each feature serves a real outcome, not visual noise.",
-      eleganceTitle: "Engineered Elegance",
-      eleganceText: "Performance and polish are designed together from day one.",
-      qualityTitle: "Long-Term Quality",
-      qualityText: "Build for adaptability, so products improve without losing identity.",
+        "Good software is more than a collection of features. I prefer to understand the problem first, then find a structure that solves it without unnecessary complexity. The interface, architecture, performance, and small details should support the same idea rather than compete for attention.",
+
+      clarityTitle: "Solve the Right Problem",
+      clarityText:
+        "A polished interface means little if the product is solving the wrong problem. I start with the purpose and build around it.",
+
+      eleganceTitle: "Keep Complexity Under Control",
+      eleganceText:
+        "Users should not need to understand what happens behind the interface. Good engineering makes complexity disappear where it matters.",
+
+      qualityTitle: "Build to Keep Improving",
+      qualityText:
+        "Products change over time. I prefer systems that can evolve with new requirements instead of becoming harder to maintain with every change.",
     },
+
     work: {
       eyebrow: "Selected Work",
       titleStart: "Work that",
@@ -88,133 +111,206 @@ export const copy = {
       live: "Live Project",
       github: "GitHub",
     },
+
     contact: {
       eyebrow: "Get in Touch",
+
       title: "Let's build something meaningful.",
+
       body:
-        "I'm open to collaboration, freelance work, and remote opportunities. If you're building a product that needs thoughtful engineering and premium execution, I'd love to connect.",
+        "I'm open to collaboration, freelance work, and remote opportunities. If you're working on a product that needs thoughtful engineering and careful execution, I'd be happy to hear about it.",
+
       email: "Email",
       linkedin: "LinkedIn",
       github: "GitHub",
+
       name: "Name",
       message: "Message",
+
       yourName: "Your name",
       yourEmail: "your@email.com",
-      messagePlaceholder: "Tell me about your project, collaboration idea, or role.",
+
+      messagePlaceholder:
+        "Tell me about your project, collaboration idea, or role.",
+
       submit: "Send Message",
-      serviceReady: "This form submits through your configured static form service.",
+
+      serviceReady:
+        "This form submits through your configured static form service.",
+
       serviceMissing:
         "Set NEXT_PUBLIC_CONTACT_FORM_ENDPOINT (Formspree/Web3Forms/EmailJS endpoint) to enable live submissions.",
-      available: "Currently available for selected projects",
+
+      available:
+        "Currently available for selected projects",
     },
   },
+
   tr: {
     nav: {
       work: "Projeler",
       journey: "Yolculuk",
       vision: "Vizyon",
-      contact: "Iletisim",
-      available: "Musait",
-      openMenu: "Menuyu ac",
-      closeMenu: "Menuyu kapat",
+      contact: "İletişim",
+      available: "Müsait",
+      openMenu: "Menüyü aç",
+      closeMenu: "Menüyü kapat",
     },
+
     hero: {
-      availability: "Yeni firsatlara acigim",
-      role: "Full-Stack Muhendis.",
+      availability: "Yeni fırsatlara açığım",
+
+      role: "Full-Stack Mühendis.",
+
       statement:
-        "Zarif muhendisligi premium bir gorsel kaliteyle bulusturan dijital urunler tasarlayip gelistiriyorum. Performans, olceklenebilirlik ve ust duzey kullanici deneyimine odaklaniyorum.",
-      workCta: "Projelerimi Incele",
-      contactCta: "Iletisime Gec",
-      scroll: "Kaydir",
+        "İyi düşünülmüş mühendisliği güçlü bir görsel kimlikle birleştiren dijital ürünler geliştiriyorum. Performans, ölçeklenebilirlik ve açık, kullanışlı ve keyifli deneyimler oluşturmaya önem veriyorum.",
+
+      workCta: "Projelerimi İncele",
+
+      contactCta: "İletişime Geç",
+
+      scroll: "Kaydır",
+
       linkedin: "LinkedIn",
+
       github: "GitHub",
     },
+
     journey: {
       eyebrow: "Akademik Yolculuk",
-      titleMain: "Journey.",
-      titleSub: "Beni bugünkü mühendisliğe taşıyan süreç.",
+
+      titleMain: "Yolculuk.",
+
+      titleSub:
+        "Meraktan üretmeye, üretmekten mühendisliğe uzanan süreç.",
+
       steps: [
         {
           number: "01",
           title: "Lise",
-          period: "2017 - 2021",
-          subtitle: "İlk Kod Satırları",
-          text: "Web teknolojileri, bilişim ve dijital sistemler eğitimi alarak web geliştirme dünyasıyla tanıştığım ve ilk tasarımlarımı hayata geçirdiğim dönem.",
+          period: "2015 - 2019",
+          subtitle: "Her Şeyin Başladığı Yer",
+          text:
+            "Teknolojiye olan ilgimin şekillenmeye başladığı dönem. Web geliştirme ve dijital sistemleri keşfetmeye, bir şeylerin nasıl çalıştığını kurcalayıp yeniden yaparak öğrenmeye ve ilk kodlarımı yazmaya burada başladım.",
         },
+
         {
           number: "02",
           title: "Dokuz Eylül Üniversitesi",
-          period: "2021 - Günümüz",
-          subtitle: "Bilgisayar Programcılığı ve Temelleri",
-          text: "Akademik disiplin, temel bilgisayar bilimleri prensipleri, algoritmalar ve veri yapıları alanında teorik ve pratik bir zemin kazandığım üniversite eğitimi.",
+          period: "2019 - 2025",
+          subtitle: "Bilgisayar Programcılığı ve Bilgisayar Bilimleri",
+          text:
+            "Üniversite, kodun arkasındaki temelleri öğrenmemi sağladı: algoritmalar, veri yapıları, yazılım geliştirme ve problem çözme. Daha önemlisi, bir probleme çözüm üretmeden önce problemi doğru anlamayı öğrendim.",
         },
+
         {
           number: "03",
-          title: "İlk Projeler ve Kendini Geliştirme",
+          title: "Üretmeye Başlamak",
           period: "2022 - 2023",
-          subtitle: "Bağımsız Geliştirme Süreci",
-          text: "React, Node.js ve modern web mimarilerini derinlemesine öğrenerek çok sayıda pratik proje ürettiğim, teoriyi çalışan kodlara dönüştürdüğüm evre.",
+          subtitle: "Projelerle Öğrenmek",
+          text:
+            "Hazır örneklerin dışına çıkıp kendi projelerimi geliştirmeye başladım. React, Node.js, veritabanları, API'ler ve mobil geliştirme; fikirleri çalışan ürünlere dönüştürmek ve gerçek problemler üzerinden öğrenmek için kullandığım araçlara dönüştü.",
         },
+
         {
           number: "04",
-          title: "Barsan Global",
+          title: "Barsan Global Logistics",
           period: "2024",
-          subtitle: "Kurumsal Mühendislik Deneyimi",
-          text: "Kurumsal Next.js mimarileri, headless CMS (Strapi) entegrasyonları, Dockerizasyon ve global içerik sistemleri tasarlayarak profesyonel standartlarda çalıştığım süreç.",
+          subtitle: "Profesyonel Deneyim",
+          text:
+            "Gerçek bir üretim ortamında frontend geliştirme; CMS mimarileri, Docker, veritabanları ve içerik sistemleriyle bir araya geldi. Tek tek özellikler geliştirmekten, sistemin tamamının nasıl çalıştığını düşünmeye geçtiğim önemli bir deneyim oldu.",
         },
+
         {
           number: "05",
-          title: "Bugünkü Vizyon",
-          period: "2025 & Sonrası",
-          subtitle: "Premium Ürün Mühendisliği",
-          text: "Sadece çalışan değil, aynı zamanda hissettiren ürünler; performans odaklı, göz alıcı ve zarafetle şekillendirilmiş üst düzey dijital deneyimler üretme odağım.",
+          title: "Bugün",
+          period: "2025 ve sonrası",
+          subtitle: "Daha Bilinçli Üretmek",
+          text:
+            "Bugün odağım, önce gerçekten işe yarayan ve ardından detaylarıyla iyi hissettiren ürünler geliştirmek. Problemi doğru anlamaya, doğru teknolojiyi seçmeye ve ortaya çıkan deneyimin her parçasını bilinçli şekilde şekillendirmeye önem veriyorum.",
         },
       ],
     },
+
     vision: {
       eyebrow: "Vizyon",
-      titleStart: "Dijital urunleri",
-      precise: "net",
-      human: "insani",
-      durable: "kalici",
+
+      titleStart: "Bir ürünün",
+      precise: "ne çözdüğüne",
+      human: "nasıl çalıştığına",
+      durable: "ve nasıl geliştiğine",
+
       body:
-        "Yaklasimim urun odakli: belirgin bir bakis acisi tasiyan arayuzler kurmak, karmasikligi arka planda tutmak ve ileri teknolojiyi sakin, guven veren deneyimlere donusturmek. Gercek kullanimda guclu kalan detaylara, olceklenebilen sistemlere ve buyurken kimligini koruyan urunlere oncelik veriyorum.",
-      clarityTitle: "Urun Netligi",
-      clarityText: "Her ozellik gorsel gurultu degil, gercek bir sonuc uretir.",
-      eleganceTitle: "Muhendislik Zarafeti",
-      eleganceText: "Performans ve gorsel kalite en bastan birlikte tasarlanir.",
-      qualityTitle: "Uzun Omurlu Kalite",
-      qualityText: "Urun kimligini bozmadan gelismeye acik sistemler kurulur.",
+        "İyi bir yazılım yalnızca özelliklerin bir araya gelmesinden ibaret değil. Önce problemin kendisini anlamayı, ardından gereksiz karmaşıklık yaratmadan onu çözebilecek doğru yapıyı kurmayı önemsiyorum. Arayüz, mimari, performans ve küçük detaylar aynı fikri desteklemeli; birbirleriyle yarışmamalı.",
+
+      clarityTitle: "Doğru Problemi Çözmek",
+      clarityText:
+        "İyi görünen bir arayüz, yanlış problemi çözüyorsa tek başına yeterli değil. Önce amacını anlamak, sonra ürünü bunun etrafında şekillendirmek gerekiyor.",
+
+      eleganceTitle: "Karmaşıklığı Kontrol Etmek",
+      eleganceText:
+        "Kullanıcının ürünün arkasında neler olduğunu anlaması gerekmemeli. İyi mühendislik, gerektiği yerde karmaşıklığı görünmez hâle getirir.",
+
+      qualityTitle: "Gelişmeye Açık Yapılar",
+      qualityText:
+        "Ürünler zamanla değişir. Yeni gereksinimler geldiğinde sistemi her seferinde yeniden yazmak yerine, gelişmeye devam edebilen yapılar kurmayı tercih ediyorum.",
     },
+
     work: {
-      eyebrow: "Secili Projeler",
-      titleStart: "Yayinlanan ve",
-      titleShip: "calisan",
+      eyebrow: "Seçili Projeler",
+
+      titleStart: "Yayınlanan ve",
+
+      titleShip: "çalışan",
+
       titleAnd: "",
-      titleScale: "olceklenen isler",
+
+      titleScale: "projeler",
+
       problem: "Problem",
-      solution: "Cozum",
-      live: "Canli Proje",
+
+      solution: "Çözüm",
+
+      live: "Canlı Proje",
+
       github: "GitHub",
     },
+
     contact: {
-      eyebrow: "Iletisime Gec",
-      title: "Anlamli bir seyler insa edelim.",
+      eyebrow: "İletişime Geç",
+
+      title: "Anlamlı bir şeyler inşa edelim.",
+
       body:
-        "Is birliklerine, freelance calismalara ve remote firsatlara acigim. Dusunceli muhendislik ve premium bir uygulama kalitesi gerektiren bir urun uzerinde calisiyorsan, baglanti kurmaktan memnuniyet duyarim.",
+        "İş birliklerine, freelance çalışmalara ve remote fırsatlara açığım. Düşünülmüş bir mühendislik yaklaşımı ve özenli bir uygulama gerektiren bir ürün üzerinde çalışıyorsanız, sizden haber almak isterim.",
+
       email: "E-posta",
+
       linkedin: "LinkedIn",
+
       github: "GitHub",
-      name: "Isim",
+
+      name: "İsim",
+
       message: "Mesaj",
-      yourName: "Isminiz",
+
+      yourName: "İsminiz",
+
       yourEmail: "eposta@ornek.com",
-      messagePlaceholder: "Projenizi, is birligi fikrinizi veya rol detaylarini paylasin.",
-      submit: "Mesaji Gonder",
-      serviceReady: "Bu form, tanimli statik form servisi uzerinden gonderilir.",
+
+      messagePlaceholder:
+        "Projenizi, iş birliği fikrinizi veya rol detaylarını paylaşın.",
+
+      submit: "Mesajı Gönder",
+
+      serviceReady:
+        "Bu form, tanımlı statik form servisi üzerinden gönderilir.",
+
       serviceMissing:
-        "Canli gonderim icin NEXT_PUBLIC_CONTACT_FORM_ENDPOINT (Formspree/Web3Forms/EmailJS endpoint) tanimlayin.",
-      available: "Su anda secili projeler icin musaitim",
+        "Canlı gönderim için NEXT_PUBLIC_CONTACT_FORM_ENDPOINT (Formspree/Web3Forms/EmailJS endpoint) tanımlayın.",
+
+      available:
+        "Şu anda seçili projeler için müsaitim",
     },
   },
 } as const;

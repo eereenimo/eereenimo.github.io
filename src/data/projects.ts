@@ -9,120 +9,191 @@ export interface Project {
   liveUrl?: string;
   githubUrl?: string;
   accentColor: string;
-  visualLabel: string; // Large decorative text behind the mockup area
+  visualLabel: string;
   images: string[];
 }
 
 export const projectsByLocale = {
   en: [
     {
-      id: "tonepilot",
+      id: "crm-lead-intelligence",
       number: "01",
-      tag: "AI Product · 2025",
-      title: "TonePilot",
+      tag: "AI · Full-Stack · 2025",
+      title: "CRM Lead Intelligence",
       problem:
-        "Every day, professionals spend significant time rewriting messages to ensure they sound clear, confident, and appropriate for their audience. Small changes in tone can dramatically affect how communication is perceived, yet achieving that consistency remains difficult.",
+        "Sales teams often work with large CRM exports where valuable signals are hidden inside inconsistent data and free-text notes. Reviewing every lead manually makes prioritization slow and difficult to scale.",
+
       solution:
-        "TonePilot is an AI-powered writing assistant that helps users improve communication through intelligent tone transformation and contextual rewriting. Built with Next.js, OpenAI, and a modern real-time experience, it enables users to experiment with different communication styles, compare revisions, and craft more effective messages with confidence.",
-      stack: ["Next.js", "TypeScript", "Tailwind CSS", "OpenAI API", "Python"],
+        "Built an AI-assisted lead intelligence system that processes CRM exports, normalizes data, scores leads, detects sales signals, and generates actionable insights. The system combines deterministic scoring with AI enrichment through a FastAPI and PostgreSQL backend and a Next.js dashboard.",
+
+      stack: [
+        "Next.js",
+        "TypeScript",
+        "FastAPI",
+        "Python",
+        "PostgreSQL",
+        "AI",
+      ],
+
       accentColor: "#6C8EFF",
       visualLabel: "AI",
       images: [
-        "/projects/tonepilot/tonepilot1.jpg",
-        "/projects/tonepilot/tonepilot-2.jpg"
+        "/projects/crm/crm1.png",
+        "/projects/crm/crm2.png",
+        "/projects/crm/crm3.png",
+        "/projects/crm/crm4.png",
+        "/projects/crm/crm5.png"
       ],
     },
+
     {
       id: "barsan",
       number: "02",
       tag: "Corporate · 2024",
       title: "Barsan Website Redesign",
+
       problem:
-        "Barsan Global Logistics needed a modern, scalable, and maintainable digital platform. The existing website suffered from outdated frontend architecture, fragmented content management workflows, and limited flexibility for future growth.",
+        "Barsan Global Logistics needed a more flexible and maintainable digital platform. The existing structure made content management and future development more difficult.",
+
       solution:
-        "I contributed to the redesign and redevelopment of the corporate website using Next.js and a component-driven architecture. The project included CMS integration with Strapi, Docker-based deployment workflows, reusable UI systems, and a scalable content structure that enables non-technical teams to manage content efficiently.",
-      stack: ["Next.js", "Strapi CMS", "Tailwind CSS", "Docker"],
+        "Contributed to the redevelopment of the corporate website using Next.js and a component-based architecture. The project integrated Strapi CMS and Docker while improving the structure of reusable UI components and content management workflows.",
+
+      stack: [
+        "Next.js",
+        "Strapi CMS",
+        "Tailwind CSS",
+        "Docker",
+      ],
+
       accentColor: "#00D4FF",
       visualLabel: "CMS",
+
       images: [
         "/projects/barsan/barsan-1.png",
         "/projects/barsan/barsan-2.png",
         "/projects/barsan/barsan-3.png",
         "/projects/barsan/barsan-4.png",
-        "/projects/barsan/barsan-5.png"
+        "/projects/barsan/barsan-5.png",
       ],
     },
+
     {
       id: "mobile-ai",
       number: "03",
-      tag: "Mobile · 2025",
+      tag: "Mobile · Research · 2025",
       title: "TÜBİTAK 2209-A Research Project",
+
       problem:
-        "Finding reliable student accommodation is often a fragmented and time-consuming process. Students must compare multiple sources, verify information manually, and navigate inconsistent data when searching for suitable housing options.",
+        "Students looking for accommodation often have to collect information from different sources, verify it manually, and compare options with inconsistent or incomplete data.",
+
       solution:
-        "Developed as a TÜBİTAK 2209-A supported university research project, this platform centralizes student accommodation data and provides an intuitive mobile experience for discovering and comparing housing options. The application combines a React Native frontend with Firebase infrastructure to deliver real-time data management, scalable architecture, and a seamless cross-platform experience.",
-      stack: ["React Native", "Firebase", "TypeScript", "AI APIs"],
+        "Developed as a TÜBİTAK 2209-A supported university research project, this platform brings student accommodation data together in one place and provides a mobile experience for discovering and comparing options. The project uses React Native and Firebase for cross-platform development and real-time data management.",
+
+      stack: [
+        "React Native",
+        "Firebase",
+        "TypeScript",
+        "AI APIs",
+      ],
+
       accentColor: "#8B5CF6",
       visualLabel: "APP",
+
       images: [
         "/projects/mobile-ai/mobile-1.jpg",
-        "/projects/mobile-ai/mobile-2.jpg"
+        "/projects/mobile-ai/mobile-2.jpg",
       ],
     },
   ] as Project[],
+
   tr: [
     {
-      id: "tonepilot",
+      id: "crm-lead-intelligence",
       number: "01",
-      tag: "Yapay Zeka Urunu · 2025",
-      title: "TonePilot",
+      tag: "Yapay Zeka · Full-Stack · 2025",
+      title: "CRM Lead Intelligence",
+
       problem:
-        "Profesyonel iletişimde doğru tonu yakalamak her zaman kolay değildir. E-postalar, müşteri mesajları veya ekip içi yazışmalar gibi farklı senaryolarda; mesajın net, profesyonel ve amacına uygun olması için kullanıcılar çoğu zaman metinlerini tekrar tekrar düzenlemek zorunda kalır.",
+        "Satış ekipleri, CRM verilerinde yer alan büyük miktardaki kayıt içerisinden önemli satış sinyallerini bulmakta zorlanabiliyor. Özellikle açıklama ve görüşme notlarının manuel incelenmesi, doğru müşterilere öncelik vermeyi zaman alıcı hâle getiriyor.",
+
       solution:
-        "TonePilot, kullanıcıların yazılı iletişimlerini yapay zekâ desteğiyle geliştirmelerine yardımcı olan bir platformdur. OpenAI entegrasyonu ve gerçek zamanlı çalışan modern arayüzü sayesinde metinleri yeniden yazar, farklı ton alternatifleri sunar ve yapılan değişikliklerin geçmişini takip ederek daha etkili iletişim kurulmasını sağlar.",
-      stack: ["Next.js", "TypeScript", "Tailwind CSS", "OpenAI API"],
+        "CRM verilerini işleyen, normalize eden, potansiyel müşteri skorları oluşturan ve satış için anlamlı aksiyonlar üreten yapay zekâ destekli bir sistem geliştirdim. FastAPI ve PostgreSQL tabanlı backend ile Next.js dashboard'u bir araya getirerek kural tabanlı skorlamayı AI destekli analizlerle birleştirdim.",
+
+      stack: [
+        "Next.js",
+        "TypeScript",
+        "FastAPI",
+        "Python",
+        "PostgreSQL",
+        "AI",
+      ],
+
       accentColor: "#6C8EFF",
       visualLabel: "AI",
+
       images: [
-        "/projects/tonepilot/tonepilot1.jpg",
-        "/projects/tonepilot/tonepilot-2.jpg"
+        "/projects/crm/crm-1.webp",
+        "/projects/crm/crm-2.webp",
+        "/projects/crm/crm-3.webp",
       ],
     },
+
     {
       id: "barsan",
       number: "02",
       tag: "Kurumsal · 2024",
-      title: "Barsan.com Yeniden Tasarim",
+      title: "Barsan Web Sitesi Yenileme",
+
       problem:
-        "Barsan Global Logistics, büyüyen içerik ihtiyaçlarını karşılayabilecek, ölçeklenebilir ve sürdürülebilir bir dijital altyapıya ihtiyaç duyuyordu. Mevcut yapı içerik güncellemelerini zorlaştırıyor, geliştirme süreçlerini yavaşlatıyor ve uzun vadeli büyüme için yeterli esnekliği sunmuyordu.",
+        "Barsan Global Logistics, büyüyen içerik ve geliştirme ihtiyaçlarını karşılayabilecek daha esnek ve sürdürülebilir bir dijital yapıya ihtiyaç duyuyordu.",
+
       solution:
-        "Geliştirme ekibinin bir parçası olarak kurumsal web sitesinin yeniden yapılandırılması sürecinde görev aldım. Projede Next.js, Strapi, Tailwind CSS ve Docker teknolojileri kullanılarak bileşen tabanlı modern bir mimari oluşturuldu. Bu sayede içerik yönetimi kolaylaştırıldı, performans artırıldı ve gelecekteki geliştirmeler için güçlü bir temel sağlandı.",
-      stack: ["Next.js", "Strapi CMS", "Tailwind CSS", "Docker"],
+        "Kurumsal web sitesinin yeniden geliştirilmesi sürecinde görev aldım. Next.js ve bileşen tabanlı bir yapı kullanılırken Strapi CMS ve Docker entegrasyonlarıyla içerik yönetimi ve geliştirme süreçleri daha sürdürülebilir hâle getirildi.",
+
+      stack: [
+        "Next.js",
+        "Strapi CMS",
+        "Tailwind CSS",
+        "Docker",
+      ],
+
       accentColor: "#00D4FF",
       visualLabel: "CMS",
+
       images: [
-        "/projects/barsan/barsan-1.jpg",
-        "/projects/barsan/barsan-2.jpg",
-        "/projects/barsan/barsan-3.jpg",
-        "/projects/barsan/barsan-4.jpg",
-        "/projects/barsan/barsan-5.jpg"
+        "/projects/barsan/barsan-1.webp",
+        "/projects/barsan/barsan-2.webp",
+        "/projects/barsan/barsan-3.webp",
+        "/projects/barsan/barsan-4.webp",
+        "/projects/barsan/barsan-5.webp",
       ],
     },
+
     {
       id: "mobile-ai",
       number: "03",
-      tag: "Mobil · 2025",
+      tag: "Mobil · Araştırma · 2025",
       title: "TÜBİTAK 2209-A Araştırma Projesi",
+
       problem:
-        "Öğrenciler için güvenilir konaklama seçeneklerine ulaşmak çoğu zaman dağınık kaynaklar nedeniyle zaman alıcı ve karmaşık bir süreçtir. Farklı platformlardan bilgi toplamak, doğruluğunu kontrol etmek ve seçenekleri karşılaştırmak önemli bir zorluk oluşturmaktadır.",
+        "Öğrenciler için uygun yurt ve konaklama seçeneklerini bulmak, farklı kaynaklardan bilgi toplamak ve seçenekleri karşılaştırmak nedeniyle zaman alıcı bir süreç olabiliyor.",
+
       solution:
-        "Bu proje, TÜBİTAK 2209-A desteği kapsamında geliştirilen bir araştırma ve mobil uygulama projesidir. Amaç, öğrenci konaklama verilerini tek bir platformda toplayarak kullanıcıların yurt ve konaklama seçeneklerini daha kolay keşfetmesini sağlamaktır. React Native ve Firebase teknolojileri kullanılarak geliştirilen uygulama, gerçek zamanlı veri yönetimi, ölçeklenebilir altyapı ve platformlar arası tutarlı bir kullanıcı deneyimi sunmaktadır.",
-      stack: ["React Native", "Firebase", "TypeScript", "AI APIs"],
+        "TÜBİTAK 2209-A kapsamında geliştirdiğimiz bu üniversite araştırma projesinde öğrenci konaklama verilerini tek bir platformda toplamayı ve kullanıcıların seçenekleri daha kolay keşfedip karşılaştırmasını hedefledik. React Native ve Firebase kullanılarak geliştirilen proje, platformlar arası mobil deneyim ve gerçek zamanlı veri yönetimi sunuyor.",
+
+      stack: [
+        "React Native",
+        "Firebase",
+        "TypeScript",
+        "AI APIs",
+      ],
+
       accentColor: "#8B5CF6",
       visualLabel: "APP",
+
       images: [
-        "/projects/mobile-ai/mobile-1.jpg",
-        "/projects/mobile-ai/mobile-2.jpg"
+        "/projects/mobile-ai/mobile-1.webp",
+        "/projects/mobile-ai/mobile-2.webp",
       ],
     },
   ] as Project[],
