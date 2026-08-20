@@ -40,7 +40,7 @@ export function Hero() {
         style={{ y: contentY, opacity }}
       >
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-          
+
           {/* Left Column: Typography & CTAs */}
           <div className="lg:col-span-7 flex flex-col items-start text-left">
             {/* Availability Badge */}
@@ -82,8 +82,7 @@ export function Hero() {
 
             {/* Supporting Statement */}
             <motion.p
-              className="max-w-[520px] text-[clamp(1rem,1.4vw,1.125rem)] leading-[1.65] text-[rgba(240,240,248,0.55)] font-light mb-10"
-              initial="hidden"
+              className="max-w-[520px] text-[clamp(1rem,1.4vw,1.125rem)] leading-[1.65] text-[var(--color-text-secondary)] font-light mb-10" initial="hidden"
               animate="visible"
               variants={staggerVariants}
               transition={transition(0.4)}
@@ -125,7 +124,7 @@ export function Hero() {
             </motion.div>
           </div>
 
-                  {/* Right Column: Architecture Slab (Product Architecture) */}
+          {/* Right Column: Architecture Slab (Product Architecture) */}
           <div className="lg:col-span-5 hidden lg:flex justify-end items-center relative perspective-[1200px]">
             <motion.div
               initial={{ opacity: 0, scale: 0.98, x: 20, filter: "blur(12px)" }}
@@ -134,14 +133,14 @@ export function Hero() {
               className="relative w-full aspect-[4/5] max-w-[380px] ml-auto group"
             >
               {/* Sinusoidal Float Container */}
-              <motion.div 
+              <motion.div
                 animate={{ y: [0, -8, 0] }}
                 transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
                 className="relative w-full h-full flex items-center justify-center"
               >
                 {/* Architecture Slab (Code Panel) */}
                 <div className="relative w-full h-full rounded-2xl border border-[rgba(108,142,255,0.15)] bg-[rgba(13,13,20,0.65)] backdrop-blur-2xl shadow-[0_48px_96px_rgba(0,0,0,0.4),inset_0_1px_rgba(255,255,255,0.02)] overflow-hidden flex flex-col p-6 md:p-8 font-mono section-eyebrow transition-all duration-300 hover:scale-[1.01] hover:border-[rgba(108,142,255,0.4)] hover:shadow-[0_48px_96px_rgba(0,0,0,0.55),0_0_40px_rgba(108,142,255,0.2)]">
-                  
+
                   {/* Terminal Header */}
                   <div className="flex items-center justify-between mb-5 pb-3 border-b border-[rgba(255,255,255,0.06)] flex-shrink-0 select-none">
                     <div className="flex items-center gap-1.5">
@@ -254,8 +253,8 @@ export function Hero() {
         <span className="text-[10px] font-mono tracking-[0.2em] uppercase text-[var(--color-text-secondary)] opacity-80">
           {t.scroll}
         </span>
-        <div 
-          className="w-px h-12 bg-gradient-to-b from-[var(--color-text-secondary)] to-transparent" 
+        <div
+          className="w-px h-12 bg-gradient-to-b from-[var(--color-text-secondary)] to-transparent"
           style={{ animation: "scroll-bounce 2s ease-in-out infinite" }}
         />
       </motion.div>
