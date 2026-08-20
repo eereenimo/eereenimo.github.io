@@ -42,7 +42,7 @@ export const copy = {
           number: "02",
           title: "Dokuz Eylül University",
           period: "2019 - 2025",
-          subtitle: "Computer Programming & Computer Science",
+          subtitle: "Computer Science",
           text:
             "University gave me the foundations behind the code: algorithms, data structures, software development, and problem solving. More importantly, it taught me to understand a problem before jumping straight to a solution.",
         },
@@ -198,7 +198,7 @@ export const copy = {
           number: "02",
           title: "Dokuz Eylül Üniversitesi",
           period: "2019 - 2025",
-          subtitle: "Bilgisayar Programcılığı ve Bilgisayar Bilimleri",
+          subtitle: "Bilgisayar Bilimleri",
           text:
             "Üniversite, kodun arkasındaki temelleri öğrenmemi sağladı: algoritmalar, veri yapıları, yazılım geliştirme ve problem çözme. Daha önemlisi, bir probleme çözüm üretmeden önce problemi doğru anlamayı öğrendim.",
         },

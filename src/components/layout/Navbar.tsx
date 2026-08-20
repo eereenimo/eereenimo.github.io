@@ -337,7 +337,7 @@ function MobileMenu({
             duration: 0.3,
           }}
         >
-          serdaroglueren5@gmail.com
+          erenserdaroglu01@gmail.com
         </motion.a>
       </motion.div>
     </div>
